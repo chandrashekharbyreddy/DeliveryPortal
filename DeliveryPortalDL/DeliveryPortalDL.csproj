@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{57590064-324B-4540-9930-7531FEC12B82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeliveryPortalDL</RootNamespace>
+    <AssemblyName>DeliveryPortalDL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\DeliveryPortal\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DEReviewDL.cs" />
+    <Compile Include="DPEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DPEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DPEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDL.cs" />
+    <Compile Include="GetDEDashboardDetails_New_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDEDashboardDetails_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetProjectAttributes_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDPDL.cs" />
+    <Compile Include="MST_Account.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Attributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_AttributeTypes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_AttributeValues.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Employee.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_EstBasis.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Flags.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Functionality.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Geo.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_IDP.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Methodology.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_NoW.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Project.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_ProjectAttributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_ProjectCodes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Project_Temp.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Questionnaire.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_ReviewQuestion.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_ReviewStatus.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_ReviewType.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MST_Sector.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectDL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReminderServiceDL.cs" />
+    <Compile Include="ReportDL.cs" />
+    <Compile Include="RetrieveProjectDetails_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_DE_Calendar.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_EmailConfiguration.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_IDP_Attributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Project_IDP_Attributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_DE_Attibute.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_DE_Review.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_IDP_Attributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_ProjCode_Details.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_Wkly_Attributes_Status.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_Wkly_Status.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_Proj_Wkly_Status_SelectAll_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufn_GetWeekList_Result.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyStatusDL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
+    <EntityDeploy Include="DPEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DPEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DPEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DPEntities.edmx</DependentUpon>
+      <LastGenOutput>DPEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DPEntities.edmx.diagram">
+      <DependentUpon>DPEntities.edmx</DependentUpon>
+    </None>
+    <None Include="DPEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DPEntities.edmx</DependentUpon>
+      <LastGenOutput>DPEntities.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{4aa96fda-85e0-4f43-a590-4919ffc13b21}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeliveryPortal\DeliveryPortalEntities\DeliveryPortalEntities.csproj">
+      <Project>{272ccc75-a868-4778-b28a-9393acabbcb5}</Project>
+      <Name>DeliveryPortalEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

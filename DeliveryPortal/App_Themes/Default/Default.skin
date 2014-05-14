@@ -1,0 +1,44 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<asp:button runat="server" BackColor="#74B2C7" ForeColor="White" />
+
+  <asp:GridView runat="server" ForeColor="#333333" GridLines="Both" Width="100%" Font-Size="9pt">
+    
+     <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#64A9C1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#64A9C1" Font-Bold="True" ForeColor="White"   />
+                        <PagerStyle BackColor="#64A9C1" ForeColor="White" HorizontalAlign="Center" />
+<AlternatingRowStyle BackColor="#C1DDE6" ForeColor="Black" />
+                        <RowStyle BackColor="#F4F9FA" ForeColor="Black" />
+                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+      </asp:GridView>
+ <asp:GridView runat="server" ForeColor="#333333" GridLines="Both" Width="100%" Font-Size="8pt" SkinId="dashboardSkin"  BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" >
+    
+     <EditRowStyle BackColor="#999999" />
+                        
+                        <HeaderStyle BackColor="#DDDDDD" Font-Bold="True" ForeColor="Black"  Font-Size="7pt" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="#64A9C1" ForeColor="White" HorizontalAlign="Center" />
+
+                        <RowStyle BackColor="#FFFFFF" ForeColor="Black"  BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
+                    
+      </asp:GridView>
+     <asp:TextBox style="width: 120px" runat="server"></asp:TextBox>
+   <asp:DropDownList runat="server" width="150px"></asp:DropDownList>
+
+<asp:ValidationSummary runat="server" CssClass="validation-summary-errors" />

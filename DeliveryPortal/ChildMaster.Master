@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeBehind="ChildMaster.master.cs" Inherits="DeliveryPortal.ChildMaster" %>
+
+<%@ MasterType VirtualPath="~/Default.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div>
+        Note: 
+    <ul>
+        <li>Please select the RAG status as applicable</li>
+        <li>Please use bullets tomake the text more readable</li>
+        <li>Use strike through to indicate if any text was valid in prior week, but is no longer valid</li>
+        <li>Use red to indicate serious items</li>
+    </ul>
+        <asp:ContentPlaceHolder ID="cphNote" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

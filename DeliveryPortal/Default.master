@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="DeliveryPortal.Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%--<script src="Scripts/jquery-1.7.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />--%>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <link href="Scripts/jquery-ui.css" rel="stylesheet" />
+    <script src="Scripts/jquery-ui.js"></script>
+    <style>
+        
+        .verticaltext
+        {
+            writing-mode:  tb-rl;
+            filter: flipH() flipV();        
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+
+
+
+            <div class="header" style="display:inline; width:100%; vertical-align:central">
+                <img src="Images\logo.png" width="214" height="60" border="0" style="vertical-align:central; display:inline"/>
+                    <h1 style="font-size:40px; color:#5A98AE; display:inline; vertical-align:central; padding-left:200px"> Delivery Portal</h1>
+            <br />
+            </div>
+            <!-- .header-->
+            
+                <div id="welcomeMessage" style="text-align:right"> Welcome <asp:Label ID="lblUserName" runat="server"></asp:Label> <asp:LinkButton ID="lnkbtnLogout" Text="Logout" runat="server" OnClick="lnkbtnLogout_Click" CausesValidation="false" /> </div>
+                    <asp:Menu ID="mnuMain" runat="server" BackColor="#64A9C1" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="12px" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" StaticEnableDefaultPopOutImage="False" Width="100%" >
+                        <DynamicHoverStyle BackColor="#A2CBDA" ForeColor="White" />
+                        <DynamicMenuItemStyle HorizontalPadding="60px" VerticalPadding="2px" />
+                        <DynamicMenuStyle BackColor="#E0EEF3" />
+                        <DynamicSelectedStyle BackColor="#95BDCB" />
+                        <Items>
+                            <asp:MenuItem Selectable="False" Text="Master Maintance" Value="Master Maintance">
+                                <asp:MenuItem NavigateUrl="~/AccountList.aspx" Text="Account Master" Value="Account Master"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/ProjectsList.aspx" Text="Project Master" Value="Project Master"></asp:MenuItem>
+                                <asp:MenuItem Text="Employee Master" Value="Employee Master" NavigateUrl="~/EmployeeList.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Attribute Master" Value="Attribute Master" NavigateUrl="~/AttributesList.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="IDP Attribute Master" Value="IDP Attribute Master" NavigateUrl="~/IDPAttributeList.aspx"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/IDPAttributesMapping.aspx" Text="IDP Attributes Mappings" Value="IDP Attributes Mappings"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/EmailConfigurationList.aspx" Text="Email Configuration" Value="Email Configuration"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Transactions" Value="Transactions">
+                                <asp:MenuItem NavigateUrl="~/WeeklyDashboard.aspx" Text="Project Weekly Status" Value="Project Weekly Status"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/DECalendarList.aspx" Text="DE Calendar" Value="DECalendar"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/DEUpdateList.aspx" Text="New DE Review" Value="NewDEReview"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/ProjectsDEsList.aspx?type=DEUP" Text="DE Updates" Value="DEUpdates"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/ProjectsDEsList.aspx?type=DEVR" Text="DE Verification" Value="DEVerification"></asp:MenuItem>
+                                
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reports" Value="Reports">
+                                <asp:MenuItem NavigateUrl="~/DEDashboard.aspx" Text="Project Health Weekly Report" Value="Project Health Weekly Report"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                        <StaticHoverStyle BackColor="#83BACD" ForeColor="White" />
+                        <StaticMenuItemStyle HorizontalPadding="60px" VerticalPadding="2px" ForeColor="White" />
+                        <StaticSelectedStyle BackColor="#95BDCB" />
+                    </asp:Menu>
+
+
+
+            <div id="content" class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+        <!-- .footer -->
+    </form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryPortal", "DeliveryPortal.csproj", "{50C82A98-ACC1-4A0B-9CB0-72B6BDA4F19A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryPortalDL", "..\DeliveryPortalDL\DeliveryPortalDL.csproj", "{57590064-324B-4540-9930-7531FEC12B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryPortalEntities", "DeliveryPortalEntities\DeliveryPortalEntities.csproj", "{272CCC75-A868-4778-B28A-9393ACABBCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{4AA96FDA-85E0-4F43-A590-4919FFC13B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDReminderService", "..\DDReminderService\DDReminderService.csproj", "{1E1D704A-5FD5-4A4C-ABC2-94D7B3206BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEReviewReminderService", "..\DEReviewReminderService\DEReviewReminderService.csproj", "{8013AA0E-E29F-4693-BC62-B18F3AB13173}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://in-mum-theranos:8080/tfs/deliveryportal
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DeliveryPortal.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\DeliveryPortalDL\\DeliveryPortalDL.csproj
+		SccProjectName2 = ../DeliveryPortalDL
+		SccLocalPath2 = ..\\DeliveryPortalDL
+		SccProjectUniqueName3 = DeliveryPortalEntities\\DeliveryPortalEntities.csproj
+		SccProjectName3 = DeliveryPortalEntities
+		SccLocalPath3 = DeliveryPortalEntities
+		SccProjectUniqueName4 = ..\\Common\\Common.csproj
+		SccProjectName4 = ../Common
+		SccLocalPath4 = ..\\Common
+		SccProjectUniqueName5 = ..\\DDReminderService\\DDReminderService.csproj
+		SccProjectName5 = ../DDReminderService
+		SccLocalPath5 = ..\\DDReminderService
+		SccProjectUniqueName6 = ..\\DEReviewReminderService\\DEReviewReminderService.csproj
+		SccProjectName6 = ../DEReviewReminderService
+		SccLocalPath6 = ..\\DEReviewReminderService
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50C82A98-ACC1-4A0B-9CB0-72B6BDA4F19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C82A98-ACC1-4A0B-9CB0-72B6BDA4F19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C82A98-ACC1-4A0B-9CB0-72B6BDA4F19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C82A98-ACC1-4A0B-9CB0-72B6BDA4F19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57590064-324B-4540-9930-7531FEC12B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57590064-324B-4540-9930-7531FEC12B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57590064-324B-4540-9930-7531FEC12B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57590064-324B-4540-9930-7531FEC12B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272CCC75-A868-4778-B28A-9393ACABBCB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272CCC75-A868-4778-B28A-9393ACABBCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272CCC75-A868-4778-B28A-9393ACABBCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272CCC75-A868-4778-B28A-9393ACABBCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA96FDA-85E0-4F43-A590-4919FFC13B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA96FDA-85E0-4F43-A590-4919FFC13B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA96FDA-85E0-4F43-A590-4919FFC13B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA96FDA-85E0-4F43-A590-4919FFC13B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E1D704A-5FD5-4A4C-ABC2-94D7B3206BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E1D704A-5FD5-4A4C-ABC2-94D7B3206BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E1D704A-5FD5-4A4C-ABC2-94D7B3206BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E1D704A-5FD5-4A4C-ABC2-94D7B3206BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8013AA0E-E29F-4693-BC62-B18F3AB13173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8013AA0E-E29F-4693-BC62-B18F3AB13173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8013AA0E-E29F-4693-BC62-B18F3AB13173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8013AA0E-E29F-4693-BC62-B18F3AB13173}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

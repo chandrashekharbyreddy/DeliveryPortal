@@ -1,0 +1,3109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MST_Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="SectorID" Type="int" />
+          <Property Name="SectorID2" Type="int" />
+          <Property Name="GeoID" Type="int" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_Attributes">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AttributeStartDate" Type="smalldatetime" />
+          <Property Name="AttributeEndDate" Type="smalldatetime" />
+          <Property Name="AttributeTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_AttributeTypes">
+          <Key>
+            <PropertyRef Name="AttributeTypeId" />
+          </Key>
+          <Property Name="AttributeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeTypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AttributeTypeCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_AttributeValues">
+          <Key>
+            <PropertyRef Name="AttributeValueId" />
+          </Key>
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="AttributeValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttributeText" Type="nvarchar" MaxLength="255" />
+          <Property Name="AttributeValueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPId" Type="int" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="WindowsId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MST_EstBasis">
+          <Key>
+            <PropertyRef Name="EstBasisId" />
+          </Key>
+          <Property Name="EstBasisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstBasisName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_Flags">
+          <Key>
+            <PropertyRef Name="FlagId" />
+          </Key>
+          <Property Name="FlagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlagName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MST_Functionality">
+          <Key>
+            <PropertyRef Name="FunctionalityId" />
+          </Key>
+          <Property Name="FunctionalityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FunctionalityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FunctionalityCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MST_Geo">
+          <Key>
+            <PropertyRef Name="GeoId" />
+          </Key>
+          <Property Name="GeoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeoName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_IDP">
+          <Key>
+            <PropertyRef Name="IDPId" />
+          </Key>
+          <Property Name="IDPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_Methodology">
+          <Key>
+            <PropertyRef Name="MethodologyId" />
+          </Key>
+          <Property Name="MethodologyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MethodologyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_NoW">
+          <Key>
+            <PropertyRef Name="NoWId" />
+          </Key>
+          <Property Name="NoWId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoWName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IDPId" Type="int" />
+          <Property Name="EMId" Type="int" />
+          <Property Name="PMId" Type="int" />
+          <Property Name="GeoId" Type="int" />
+          <Property Name="SectorId" Type="int" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="MethodologyId" Type="int" />
+          <Property Name="NoWId" Type="int" />
+          <Property Name="EstBasisId" Type="int" />
+          <Property Name="LastDEReviewDate" Type="smalldatetime" />
+          <Property Name="LastIDQADate" Type="smalldatetime" />
+          <Property Name="LastSMRDate" Type="smalldatetime" />
+          <Property Name="IsStrategic" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_Project_Temp">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="IDPId" Type="int" Nullable="false" />
+          <Property Name="EMId" Type="int" Nullable="false" />
+          <Property Name="PMId" Type="int" Nullable="false" />
+          <Property Name="IsStrategic" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="smalldatetime" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="LastDEReviewDate" Type="smalldatetime" />
+          <Property Name="LastIDQADate" Type="smalldatetime" />
+          <Property Name="LastSMRDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_ProjectAttributes">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ParentAttributeId" Type="int" />
+          <Property Name="IsDE" Type="bit" />
+          <Property Name="EffectiveStartDate" Type="smalldatetime" />
+          <Property Name="EffectiveEndDate" Type="smalldatetime" />
+          <Property Name="SampleQuestions" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MST_ProjectCodes">
+          <Key>
+            <PropertyRef Name="ProjectCodeId" />
+          </Key>
+          <Property Name="ProjectCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ProjectCode" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="OnshoreHC" Type="int" />
+          <Property Name="OffShoreHC" Type="int" />
+        </EntityType>
+        <EntityType Name="MST_Questionnaire">
+          <Key>
+            <PropertyRef Name="QuestionnaireId" />
+          </Key>
+          <Property Name="QuestionnaireId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPId" Type="int" Nullable="false" />
+          <Property Name="QuestionnaireName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ReviewTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_ReviewQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="int" Nullable="false" />
+          <Property Name="QuestionDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QuestionGuideLines" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_ReviewStatus">
+          <Key>
+            <PropertyRef Name="ReviewStatusId" />
+          </Key>
+          <Property Name="ReviewStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReviewStatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReviewStatusCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MST_ReviewType">
+          <Key>
+            <PropertyRef Name="ReviewTypeId" />
+          </Key>
+          <Property Name="ReviewTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReviewTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_Sector">
+          <Key>
+            <PropertyRef Name="SectorId" />
+          </Key>
+          <Property Name="SectorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectorName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ParentSectorId" Type="int" />
+          <Property Name="LastUpdateBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Tran_DE_Calendar">
+          <Key>
+            <PropertyRef Name="DEReviewCalendarId" />
+          </Key>
+          <Property Name="DEReviewCalendarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="ReviewDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="ReviewStatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran_EmailConfiguration">
+          <Key>
+            <PropertyRef Name="EmailConfigId" />
+          </Key>
+          <Property Name="EmailConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FunctionalityId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tran_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="IDPAttributeId" />
+          </Key>
+          <Property Name="IDPAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPId" Type="int" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_DE_Attibute">
+          <Key>
+            <PropertyRef Name="DEReviewAttributeId" />
+          </Key>
+          <Property Name="DEReviewAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEReviewId" Type="int" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="FlagId" Type="int" />
+          <Property Name="Observations" Type="nvarchar(max)" />
+          <Property Name="Recommendations" Type="nvarchar(max)" />
+          <Property Name="LatestUpdates" Type="nvarchar(max)" />
+          <Property Name="CorrectiveActions" Type="nvarchar(max)" />
+          <Property Name="ETA" Type="smalldatetime" />
+          <Property Name="ReviewStatusId" Type="int" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_DE_Review">
+          <Key>
+            <PropertyRef Name="DEReviewId" />
+          </Key>
+          <Property Name="DEReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEReviewCalendarId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="ReviewDate" Type="smalldatetime" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="ProjectIDPAttributeId" />
+          </Key>
+          <Property Name="ProjectIDPAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="AttributeValueId" Type="int" />
+          <Property Name="AttributeTextValue" Type="nchar" MaxLength="100" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_ProjCode_Details">
+          <Key>
+            <PropertyRef Name="ProjectTranId" />
+          </Key>
+          <Property Name="ProjectTranId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="ProjectCodeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_Wkly_Attributes_Status">
+          <Key>
+            <PropertyRef Name="WeeklyStatusId" />
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="WeeklyStatusId" Type="int" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="FlagId" Type="int" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_Wkly_Status">
+          <Key>
+            <PropertyRef Name="WeeklyStatusId" />
+          </Key>
+          <Property Name="WeeklyStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekId" Type="int" Nullable="false" />
+          <Property Name="WeekStartDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="PriorOverallStatusId" Type="int" Nullable="false" />
+          <Property Name="CurrentOverallStatusId" Type="int" Nullable="false" />
+          <Property Name="LatestUpdates" Type="nvarchar(max)" />
+          <Property Name="RiskItems" Type="nvarchar(max)" />
+          <Property Name="IssueItems" Type="nvarchar(max)" />
+          <Property Name="CorrectiveActions" Type="nvarchar(max)" />
+          <Property Name="OverrideStatusId" Type="int" />
+          <Property Name="FlagsUpdatedByLevel" Type="int" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdatedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Tran_Project_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="ProjectIDPAttributeId" />
+          </Key>
+          <Property Name="ProjectIDPAttributeId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MST_Account_MST_Geo">
+          <End Role="MST_Geo" Type="Self.MST_Geo" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Geo">
+              <PropertyRef Name="GeoId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="GeoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Account_MST_Sector">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="SectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Account_MST_Sector1">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="SectorID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Attributes_MST_AttributeTypes">
+          <End Role="MST_AttributeTypes" Type="Self.MST_AttributeTypes" Multiplicity="1" />
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_AttributeTypes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Principal>
+            <Dependent Role="MST_Attributes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Employee_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="0..1" />
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Employee">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Account">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="PMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Employee1">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="EMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_EstBasis">
+          <End Role="MST_EstBasis" Type="Self.MST_EstBasis" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_EstBasis">
+              <PropertyRef Name="EstBasisId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="EstBasisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Geo">
+          <End Role="MST_Geo" Type="Self.MST_Geo" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Geo">
+              <PropertyRef Name="GeoId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="GeoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Methodology">
+          <End Role="MST_Methodology" Type="Self.MST_Methodology" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Methodology">
+              <PropertyRef Name="MethodologyId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="MethodologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_NoW">
+          <End Role="MST_NoW" Type="Self.MST_NoW" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_NoW">
+              <PropertyRef Name="NoWId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="NoWId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Sector">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ProjectAttributes_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="0..1" />
+          <End Role="MST_ProjectAttributes1" Type="Self.MST_ProjectAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="MST_ProjectAttributes1">
+              <PropertyRef Name="ParentAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Questionnaire_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Questionnaire">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Questionnaire_MST_ReviewType">
+          <End Role="MST_ReviewType" Type="Self.MST_ReviewType" Multiplicity="1" />
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewType">
+              <PropertyRef Name="ReviewTypeId" />
+            </Principal>
+            <Dependent Role="MST_Questionnaire">
+              <PropertyRef Name="ReviewTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ReviewQuestion_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="MST_ReviewQuestion" Type="Self.MST_ReviewQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="MST_ReviewQuestion">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ReviewQuestion_MST_Questionnaire">
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="1" />
+          <End Role="MST_ReviewQuestion" Type="Self.MST_ReviewQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="MST_ReviewQuestion">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Account_AccountId">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employee_EmployeeId">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="EMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employee_PM_EmployeeId">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="PMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_IDP_IDPId">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCodes_Account_AccountId">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_ProjectCodes">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIDPAttributes_Attributes_AttributeId">
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="1" />
+          <End Role="Tran_Proj_IDP_Attributes" Type="Self.Tran_Proj_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_IDP_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIDPAttributes_Project_ProjectId">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_IDP_Attributes" Type="Self.Tran_Proj_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_IDP_Attributes">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectCodes_Project_ProjectId">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
+          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectCodes">
+              <PropertyRef Name="ProjectCodeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
+              <PropertyRef Name="ProjectCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_ReviewStatus">
+          <End Role="MST_ReviewStatus" Type="Self.MST_ReviewStatus" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewStatus">
+              <PropertyRef Name="ReviewStatusId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="ReviewStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_EmailConfiguration_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="Tran_EmailConfiguration" Type="Self.Tran_EmailConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Tran_EmailConfiguration">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_EmailConfiguration_MST_Functionality">
+          <End Role="MST_Functionality" Type="Self.MST_Functionality" Multiplicity="0..1" />
+          <End Role="Tran_EmailConfiguration" Type="Self.Tran_EmailConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Functionality">
+              <PropertyRef Name="FunctionalityId" />
+            </Principal>
+            <Dependent Role="Tran_EmailConfiguration">
+              <PropertyRef Name="FunctionalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_IDP_Attributes_MST_Attributes">
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="1" />
+          <End Role="Tran_IDP_Attributes" Type="Self.Tran_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_IDP_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_IDP_Attributes_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="Tran_IDP_Attributes" Type="Self.Tran_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="Tran_IDP_Attributes">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="FlagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_ReviewStatus">
+          <End Role="MST_ReviewStatus" Type="Self.MST_ReviewStatus" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewStatus">
+              <PropertyRef Name="ReviewStatusId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="ReviewStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review">
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="DEReviewId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="DEReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Review_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Review_Tran_DE_Calendar">
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_DE_Calendar">
+              <PropertyRef Name="DEReviewCalendarId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="DEReviewCalendarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="0..1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="FlagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status">
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="WeeklyStatusId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="WeeklyStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="PriorOverallStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Flags1">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="CurrentOverallStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetDEDashboardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPId" Type="int" Mode="In" />
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+          <Parameter Name="GeoId" Type="int" Mode="In" />
+          <Parameter Name="SectorId" Type="int" Mode="In" />
+          <Parameter Name="WeekID" Type="int" Mode="In" />
+          <Parameter Name="IsStrategic" Type="bit" Mode="In" />
+          <Parameter Name="IsRA" Type="bit" Mode="In" />
+          <Parameter Name="SectorId2" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDEDashboardDetails_New" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+          <Parameter Name="GeoId" Type="int" Mode="In" />
+          <Parameter Name="SectorId" Type="int" Mode="In" />
+          <Parameter Name="IsStrategic" Type="bit" Mode="In" />
+          <Parameter Name="IsRA" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GetPreviousWeekStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ProjectID" Type="int" Mode="In" />
+          <Parameter Name="WeekID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProjectAttributes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetrieveProjectDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountId" Type="int" Mode="In" />
+          <Parameter Name="GeoId" Type="int" Mode="In" />
+          <Parameter Name="SectorId" Type="int" Mode="In" />
+          <Parameter Name="IsStrategic" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="RetrieveProjectDetailsByProID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProjectId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Tran_Proj_Wkly_Status_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProID" Type="int" Mode="In" />
+          <Parameter Name="WeekID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ufn_GetWeekList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID" Type="int" Nullable="false" />
+                <Property Name="DT" Type="datetime" />
+                <Property Name="Edt" Type="datetime" />
+                <Property Name="Wk" Type="varchar" MaxLength="100" />
+                <Property Name="WkPeriod" Type="varchar" MaxLength="100" />
+                <Property Name="WkStartDay" Type="varchar" MaxLength="10" />
+                <Property Name="WkEndDay" Type="varchar" MaxLength="10" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="DashboardModelStoreContainer">
+          <EntitySet Name="MST_Account" EntityType="Self.MST_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Attributes" EntityType="Self.MST_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_AttributeTypes" EntityType="Self.MST_AttributeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_AttributeValues" EntityType="Self.MST_AttributeValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Employee" EntityType="Self.MST_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_EstBasis" EntityType="Self.MST_EstBasis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Flags" EntityType="Self.MST_Flags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Functionality" EntityType="Self.MST_Functionality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Geo" EntityType="Self.MST_Geo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_IDP" EntityType="Self.MST_IDP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Methodology" EntityType="Self.MST_Methodology" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_NoW" EntityType="Self.MST_NoW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Project" EntityType="Self.MST_Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Project_Temp" EntityType="Self.MST_Project_Temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_ProjectAttributes" EntityType="Self.MST_ProjectAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_ProjectCodes" EntityType="Self.MST_ProjectCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Questionnaire" EntityType="Self.MST_Questionnaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_ReviewQuestion" EntityType="Self.MST_ReviewQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_ReviewStatus" EntityType="Self.MST_ReviewStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_ReviewType" EntityType="Self.MST_ReviewType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Sector" EntityType="Self.MST_Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_DE_Calendar" EntityType="Self.Tran_DE_Calendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_EmailConfiguration" EntityType="Self.Tran_EmailConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_IDP_Attributes" EntityType="Self.Tran_IDP_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_DE_Attibute" EntityType="Self.Tran_Proj_DE_Attibute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_DE_Review" EntityType="Self.Tran_Proj_DE_Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_IDP_Attributes" EntityType="Self.Tran_Proj_IDP_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_ProjCode_Details" EntityType="Self.Tran_Proj_ProjCode_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_Wkly_Attributes_Status" EntityType="Self.Tran_Proj_Wkly_Attributes_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Proj_Wkly_Status" EntityType="Self.Tran_Proj_Wkly_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Project_IDP_Attributes" EntityType="Self.Tran_Project_IDP_Attributes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MST_Account_MST_Geo" Association="Self.FK_MST_Account_MST_Geo">
+            <End Role="MST_Geo" EntitySet="MST_Geo" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Account_MST_Sector" Association="Self.FK_MST_Account_MST_Sector">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Account_MST_Sector1" Association="Self.FK_MST_Account_MST_Sector1">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Attributes_MST_AttributeTypes" Association="Self.FK_MST_Attributes_MST_AttributeTypes">
+            <End Role="MST_AttributeTypes" EntitySet="MST_AttributeTypes" />
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Employee_MST_IDP" Association="Self.FK_MST_Employee_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Account" Association="Self.FK_MST_Project_MST_Account">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Employee" Association="Self.FK_MST_Project_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Employee1" Association="Self.FK_MST_Project_MST_Employee1">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_EstBasis" Association="Self.FK_MST_Project_MST_EstBasis">
+            <End Role="MST_EstBasis" EntitySet="MST_EstBasis" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Geo" Association="Self.FK_MST_Project_MST_Geo">
+            <End Role="MST_Geo" EntitySet="MST_Geo" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_IDP" Association="Self.FK_MST_Project_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Methodology" Association="Self.FK_MST_Project_MST_Methodology">
+            <End Role="MST_Methodology" EntitySet="MST_Methodology" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_NoW" Association="Self.FK_MST_Project_MST_NoW">
+            <End Role="MST_NoW" EntitySet="MST_NoW" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Sector" Association="Self.FK_MST_Project_MST_Sector">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ProjectAttributes_MST_ProjectAttributes" Association="Self.FK_MST_ProjectAttributes_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="MST_ProjectAttributes1" EntitySet="MST_ProjectAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Questionnaire_MST_IDP" Association="Self.FK_MST_Questionnaire_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Questionnaire_MST_ReviewType" Association="Self.FK_MST_Questionnaire_MST_ReviewType">
+            <End Role="MST_ReviewType" EntitySet="MST_ReviewType" />
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ReviewQuestion_MST_ProjectAttributes" Association="Self.FK_MST_ReviewQuestion_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="MST_ReviewQuestion" EntitySet="MST_ReviewQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ReviewQuestion_MST_Questionnaire" Association="Self.FK_MST_ReviewQuestion_MST_Questionnaire">
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+            <End Role="MST_ReviewQuestion" EntitySet="MST_ReviewQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Account_AccountId" Association="Self.FK_Project_Account_AccountId">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employee_EmployeeId" Association="Self.FK_Project_Employee_EmployeeId">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employee_PM_EmployeeId" Association="Self.FK_Project_Employee_PM_EmployeeId">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_IDP_IDPId" Association="Self.FK_Project_IDP_IDPId">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCodes_Account_AccountId" Association="Self.FK_ProjectCodes_Account_AccountId">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIDPAttributes_Attributes_AttributeId" Association="Self.FK_ProjectIDPAttributes_Attributes_AttributeId">
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+            <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIDPAttributes_Project_ProjectId" Association="Self.FK_ProjectIDPAttributes_Project_ProjectId">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectCodes_Project_ProjectId" Association="Self.FK_ProjectProjectCodes_Project_ProjectId">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" Association="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
+            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_Employee" Association="Self.FK_Tran_DE_Calendar_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_Project" Association="Self.FK_Tran_DE_Calendar_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_ReviewStatus" Association="Self.FK_Tran_DE_Calendar_MST_ReviewStatus">
+            <End Role="MST_ReviewStatus" EntitySet="MST_ReviewStatus" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_EmailConfiguration_MST_Employee" Association="Self.FK_Tran_EmailConfiguration_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="Tran_EmailConfiguration" EntitySet="Tran_EmailConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_EmailConfiguration_MST_Functionality" Association="Self.FK_Tran_EmailConfiguration_MST_Functionality">
+            <End Role="MST_Functionality" EntitySet="MST_Functionality" />
+            <End Role="Tran_EmailConfiguration" EntitySet="Tran_EmailConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_IDP_Attributes_MST_Attributes" Association="Self.FK_Tran_IDP_Attributes_MST_Attributes">
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+            <End Role="Tran_IDP_Attributes" EntitySet="Tran_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_IDP_Attributes_MST_IDP" Association="Self.FK_Tran_IDP_Attributes_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="Tran_IDP_Attributes" EntitySet="Tran_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_Flags" Association="Self.FK_Tran_Proj_DE_Attibute_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes" Association="Self.FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_ReviewStatus" Association="Self.FK_Tran_Proj_DE_Attibute_MST_ReviewStatus">
+            <End Role="MST_ReviewStatus" EntitySet="MST_ReviewStatus" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review" Association="Self.FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review">
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Review_MST_Project" Association="Self.FK_Tran_Proj_DE_Review_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Review_Tran_DE_Calendar" Association="Self.FK_Tran_Proj_DE_Review_Tran_DE_Calendar">
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status">
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Flags" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Flags1" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Flags1">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Project" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="ufn_GetWeekList_Result">
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DT" Type="DateTime" />
+          <Property Name="Edt" Type="DateTime" />
+          <Property Name="Wk" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WkPeriod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WkStartDay" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WkEndDay" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="MST_Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SectorID" Type="Int32" />
+          <Property Name="SectorID2" Type="Int32" />
+          <Property Name="GeoID" Type="Int32" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Geo" Relationship="Self.FK_MST_Account_MST_Geo" FromRole="MST_Account" ToRole="MST_Geo" />
+          <NavigationProperty Name="MST_Sector" Relationship="Self.FK_MST_Account_MST_Sector" FromRole="MST_Account" ToRole="MST_Sector" />
+          <NavigationProperty Name="MST_Sector1" Relationship="Self.FK_MST_Account_MST_Sector1" FromRole="MST_Account" ToRole="MST_Sector" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Account" FromRole="MST_Account" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_Project_Temp" Relationship="Self.FK_Project_Account_AccountId" FromRole="MST_Account" ToRole="MST_Project_Temp" />
+          <NavigationProperty Name="MST_ProjectCodes" Relationship="Self.FK_ProjectCodes_Account_AccountId" FromRole="MST_Account" ToRole="MST_ProjectCodes" />
+        </EntityType>
+        <EntityType Name="MST_Attributes">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttributeStartDate" Type="DateTime" Precision="0" />
+          <Property Name="AttributeEndDate" Type="DateTime" Precision="0" />
+          <Property Name="AttributeTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_AttributeTypes" Relationship="Self.FK_MST_Attributes_MST_AttributeTypes" FromRole="MST_Attributes" ToRole="MST_AttributeTypes" />
+          <NavigationProperty Name="Tran_Proj_IDP_Attributes" Relationship="Self.FK_ProjectIDPAttributes_Attributes_AttributeId" FromRole="MST_Attributes" ToRole="Tran_Proj_IDP_Attributes" />
+          <NavigationProperty Name="Tran_IDP_Attributes" Relationship="Self.FK_Tran_IDP_Attributes_MST_Attributes" FromRole="MST_Attributes" ToRole="Tran_IDP_Attributes" />
+        </EntityType>
+        <EntityType Name="MST_AttributeTypes">
+          <Key>
+            <PropertyRef Name="AttributeTypeId" />
+          </Key>
+          <Property Name="AttributeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttributeTypeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MST_Attributes" Relationship="Self.FK_MST_Attributes_MST_AttributeTypes" FromRole="MST_AttributeTypes" ToRole="MST_Attributes" />
+        </EntityType>
+        <EntityType Name="MST_AttributeValues">
+          <Key>
+            <PropertyRef Name="AttributeValueId" />
+          </Key>
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttributeText" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AttributeValueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MST_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPId" Type="Int32" />
+          <Property Name="EmployeeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WindowsId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MST_IDP" Relationship="Self.FK_MST_Employee_MST_IDP" FromRole="MST_Employee" ToRole="MST_IDP" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Employee" FromRole="MST_Employee" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_Project1" Relationship="Self.FK_MST_Project_MST_Employee1" FromRole="MST_Employee" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_Project_Temp" Relationship="Self.FK_Project_Employee_EmployeeId" FromRole="MST_Employee" ToRole="MST_Project_Temp" />
+          <NavigationProperty Name="MST_Project_Temp1" Relationship="Self.FK_Project_Employee_PM_EmployeeId" FromRole="MST_Employee" ToRole="MST_Project_Temp" />
+          <NavigationProperty Name="Tran_DE_Calendar" Relationship="Self.FK_Tran_DE_Calendar_MST_Employee" FromRole="MST_Employee" ToRole="Tran_DE_Calendar" />
+          <NavigationProperty Name="Tran_EmailConfiguration" Relationship="Self.FK_Tran_EmailConfiguration_MST_Employee" FromRole="MST_Employee" ToRole="Tran_EmailConfiguration" />
+        </EntityType>
+        <EntityType Name="MST_EstBasis">
+          <Key>
+            <PropertyRef Name="EstBasisId" />
+          </Key>
+          <Property Name="EstBasisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstBasisName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_EstBasis" FromRole="MST_EstBasis" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="MST_Flags">
+          <Key>
+            <PropertyRef Name="FlagId" />
+          </Key>
+          <Property Name="FlagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlagName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tran_Proj_DE_Attibute" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_Flags" FromRole="MST_Flags" ToRole="Tran_Proj_DE_Attibute" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Attributes_Status" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" FromRole="MST_Flags" ToRole="Tran_Proj_Wkly_Attributes_Status" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Status" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Flags" FromRole="MST_Flags" ToRole="Tran_Proj_Wkly_Status" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Status1" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Flags1" FromRole="MST_Flags" ToRole="Tran_Proj_Wkly_Status" />
+        </EntityType>
+        <EntityType Name="MST_Functionality">
+          <Key>
+            <PropertyRef Name="FunctionalityId" />
+          </Key>
+          <Property Name="FunctionalityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionalityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FunctionalityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tran_EmailConfiguration" Relationship="Self.FK_Tran_EmailConfiguration_MST_Functionality" FromRole="MST_Functionality" ToRole="Tran_EmailConfiguration" />
+        </EntityType>
+        <EntityType Name="MST_Geo">
+          <Key>
+            <PropertyRef Name="GeoId" />
+          </Key>
+          <Property Name="GeoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeoName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Account" Relationship="Self.FK_MST_Account_MST_Geo" FromRole="MST_Geo" ToRole="MST_Account" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Geo" FromRole="MST_Geo" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="MST_IDP">
+          <Key>
+            <PropertyRef Name="IDPId" />
+          </Key>
+          <Property Name="IDPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Employee" Relationship="Self.FK_MST_Employee_MST_IDP" FromRole="MST_IDP" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_IDP" FromRole="MST_IDP" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_Questionnaire" Relationship="Self.FK_MST_Questionnaire_MST_IDP" FromRole="MST_IDP" ToRole="MST_Questionnaire" />
+          <NavigationProperty Name="MST_Project_Temp" Relationship="Self.FK_Project_IDP_IDPId" FromRole="MST_IDP" ToRole="MST_Project_Temp" />
+          <NavigationProperty Name="Tran_IDP_Attributes" Relationship="Self.FK_Tran_IDP_Attributes_MST_IDP" FromRole="MST_IDP" ToRole="Tran_IDP_Attributes" />
+        </EntityType>
+        <EntityType Name="MST_Methodology">
+          <Key>
+            <PropertyRef Name="MethodologyId" />
+          </Key>
+          <Property Name="MethodologyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MethodologyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Methodology" FromRole="MST_Methodology" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="MST_NoW">
+          <Key>
+            <PropertyRef Name="NoWId" />
+          </Key>
+          <Property Name="NoWId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoWName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_NoW" FromRole="MST_NoW" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="MST_Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDPId" Type="Int32" />
+          <Property Name="EMId" Type="Int32" />
+          <Property Name="PMId" Type="Int32" />
+          <Property Name="GeoId" Type="Int32" />
+          <Property Name="SectorId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="MethodologyId" Type="Int32" />
+          <Property Name="NoWId" Type="Int32" />
+          <Property Name="EstBasisId" Type="Int32" />
+          <Property Name="LastDEReviewDate" Type="DateTime" Precision="0" />
+          <Property Name="LastIDQADate" Type="DateTime" Precision="0" />
+          <Property Name="LastSMRDate" Type="DateTime" Precision="0" />
+          <Property Name="IsStrategic" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Account" Relationship="Self.FK_MST_Project_MST_Account" FromRole="MST_Project" ToRole="MST_Account" />
+          <NavigationProperty Name="MST_Employee" Relationship="Self.FK_MST_Project_MST_Employee" FromRole="MST_Project" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_Employee1" Relationship="Self.FK_MST_Project_MST_Employee1" FromRole="MST_Project" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_EstBasis" Relationship="Self.FK_MST_Project_MST_EstBasis" FromRole="MST_Project" ToRole="MST_EstBasis" />
+          <NavigationProperty Name="MST_Geo" Relationship="Self.FK_MST_Project_MST_Geo" FromRole="MST_Project" ToRole="MST_Geo" />
+          <NavigationProperty Name="MST_IDP" Relationship="Self.FK_MST_Project_MST_IDP" FromRole="MST_Project" ToRole="MST_IDP" />
+          <NavigationProperty Name="MST_Methodology" Relationship="Self.FK_MST_Project_MST_Methodology" FromRole="MST_Project" ToRole="MST_Methodology" />
+          <NavigationProperty Name="MST_NoW" Relationship="Self.FK_MST_Project_MST_NoW" FromRole="MST_Project" ToRole="MST_NoW" />
+          <NavigationProperty Name="MST_Sector" Relationship="Self.FK_MST_Project_MST_Sector" FromRole="MST_Project" ToRole="MST_Sector" />
+          <NavigationProperty Name="Tran_Proj_IDP_Attributes" Relationship="Self.FK_ProjectIDPAttributes_Project_ProjectId" FromRole="MST_Project" ToRole="Tran_Proj_IDP_Attributes" />
+          <NavigationProperty Name="Tran_Proj_ProjCode_Details" Relationship="Self.FK_ProjectProjectCodes_Project_ProjectId" FromRole="MST_Project" ToRole="Tran_Proj_ProjCode_Details" />
+          <NavigationProperty Name="Tran_DE_Calendar" Relationship="Self.FK_Tran_DE_Calendar_MST_Project" FromRole="MST_Project" ToRole="Tran_DE_Calendar" />
+          <NavigationProperty Name="Tran_Proj_DE_Review" Relationship="Self.FK_Tran_Proj_DE_Review_MST_Project" FromRole="MST_Project" ToRole="Tran_Proj_DE_Review" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Status" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Project" FromRole="MST_Project" ToRole="Tran_Proj_Wkly_Status" />
+        </EntityType>
+        <EntityType Name="MST_Project_Temp">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IDPId" Type="Int32" Nullable="false" />
+          <Property Name="EMId" Type="Int32" Nullable="false" />
+          <Property Name="PMId" Type="Int32" Nullable="false" />
+          <Property Name="IsStrategic" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="LastDEReviewDate" Type="DateTime" Precision="0" />
+          <Property Name="LastIDQADate" Type="DateTime" Precision="0" />
+          <Property Name="LastSMRDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Account" Relationship="Self.FK_Project_Account_AccountId" FromRole="MST_Project_Temp" ToRole="MST_Account" />
+          <NavigationProperty Name="MST_Employee" Relationship="Self.FK_Project_Employee_EmployeeId" FromRole="MST_Project_Temp" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_Employee1" Relationship="Self.FK_Project_Employee_PM_EmployeeId" FromRole="MST_Project_Temp" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_IDP" Relationship="Self.FK_Project_IDP_IDPId" FromRole="MST_Project_Temp" ToRole="MST_IDP" />
+        </EntityType>
+        <EntityType Name="MST_ProjectAttributes">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentAttributeId" Type="Int32" />
+          <Property Name="IsDE" Type="Boolean" />
+          <Property Name="EffectiveStartDate" Type="DateTime" Precision="0" />
+          <Property Name="EffectiveEndDate" Type="DateTime" Precision="0" />
+          <Property Name="SampleQuestions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_ProjectAttributes1" Relationship="Self.FK_MST_ProjectAttributes_MST_ProjectAttributes" FromRole="MST_ProjectAttributes" ToRole="MST_ProjectAttributes1" />
+          <NavigationProperty Name="MST_ProjectAttributes2" Relationship="Self.FK_MST_ProjectAttributes_MST_ProjectAttributes" FromRole="MST_ProjectAttributes1" ToRole="MST_ProjectAttributes" />
+          <NavigationProperty Name="MST_ReviewQuestion" Relationship="Self.FK_MST_ReviewQuestion_MST_ProjectAttributes" FromRole="MST_ProjectAttributes" ToRole="MST_ReviewQuestion" />
+          <NavigationProperty Name="Tran_Proj_DE_Attibute" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes" FromRole="MST_ProjectAttributes" ToRole="Tran_Proj_DE_Attibute" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Attributes_Status" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes" FromRole="MST_ProjectAttributes" ToRole="Tran_Proj_Wkly_Attributes_Status" />
+        </EntityType>
+        <EntityType Name="MST_ProjectCodes">
+          <Key>
+            <PropertyRef Name="ProjectCodeId" />
+          </Key>
+          <Property Name="ProjectCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OnshoreHC" Type="Int32" />
+          <Property Name="OffShoreHC" Type="Int32" />
+          <NavigationProperty Name="MST_Account" Relationship="Self.FK_ProjectCodes_Account_AccountId" FromRole="MST_ProjectCodes" ToRole="MST_Account" />
+          <NavigationProperty Name="Tran_Proj_ProjCode_Details" Relationship="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" FromRole="MST_ProjectCodes" ToRole="Tran_Proj_ProjCode_Details" />
+        </EntityType>
+        <EntityType Name="MST_Questionnaire">
+          <Key>
+            <PropertyRef Name="QuestionnaireId" />
+          </Key>
+          <Property Name="QuestionnaireId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionnaireName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ReviewTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_IDP" Relationship="Self.FK_MST_Questionnaire_MST_IDP" FromRole="MST_Questionnaire" ToRole="MST_IDP" />
+          <NavigationProperty Name="MST_ReviewType" Relationship="Self.FK_MST_Questionnaire_MST_ReviewType" FromRole="MST_Questionnaire" ToRole="MST_ReviewType" />
+          <NavigationProperty Name="MST_ReviewQuestion" Relationship="Self.FK_MST_ReviewQuestion_MST_Questionnaire" FromRole="MST_Questionnaire" ToRole="MST_ReviewQuestion" />
+        </EntityType>
+        <EntityType Name="MST_ReviewQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuestionGuideLines" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_ProjectAttributes" Relationship="Self.FK_MST_ReviewQuestion_MST_ProjectAttributes" FromRole="MST_ReviewQuestion" ToRole="MST_ProjectAttributes" />
+          <NavigationProperty Name="MST_Questionnaire" Relationship="Self.FK_MST_ReviewQuestion_MST_Questionnaire" FromRole="MST_ReviewQuestion" ToRole="MST_Questionnaire" />
+        </EntityType>
+        <EntityType Name="MST_ReviewStatus">
+          <Key>
+            <PropertyRef Name="ReviewStatusId" />
+          </Key>
+          <Property Name="ReviewStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReviewStatusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tran_DE_Calendar" Relationship="Self.FK_Tran_DE_Calendar_MST_ReviewStatus" FromRole="MST_ReviewStatus" ToRole="Tran_DE_Calendar" />
+          <NavigationProperty Name="Tran_Proj_DE_Attibute" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_ReviewStatus" FromRole="MST_ReviewStatus" ToRole="Tran_Proj_DE_Attibute" />
+        </EntityType>
+        <EntityType Name="MST_ReviewType">
+          <Key>
+            <PropertyRef Name="ReviewTypeId" />
+          </Key>
+          <Property Name="ReviewTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MST_Questionnaire" Relationship="Self.FK_MST_Questionnaire_MST_ReviewType" FromRole="MST_ReviewType" ToRole="MST_Questionnaire" />
+        </EntityType>
+        <EntityType Name="MST_Sector">
+          <Key>
+            <PropertyRef Name="SectorId" />
+          </Key>
+          <Property Name="SectorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectorName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ParentSectorId" Type="Int32" />
+          <Property Name="LastUpdateBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Account" Relationship="Self.FK_MST_Account_MST_Sector" FromRole="MST_Sector" ToRole="MST_Account" />
+          <NavigationProperty Name="MST_Account1" Relationship="Self.FK_MST_Account_MST_Sector1" FromRole="MST_Sector" ToRole="MST_Account" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Sector" FromRole="MST_Sector" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="Tran_DE_Calendar">
+          <Key>
+            <PropertyRef Name="DEReviewCalendarId" />
+          </Key>
+          <Property Name="DEReviewCalendarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReviewStatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_Employee" Relationship="Self.FK_Tran_DE_Calendar_MST_Employee" FromRole="Tran_DE_Calendar" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_Tran_DE_Calendar_MST_Project" FromRole="Tran_DE_Calendar" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_ReviewStatus" Relationship="Self.FK_Tran_DE_Calendar_MST_ReviewStatus" FromRole="Tran_DE_Calendar" ToRole="MST_ReviewStatus" />
+          <NavigationProperty Name="Tran_Proj_DE_Review" Relationship="Self.FK_Tran_Proj_DE_Review_Tran_DE_Calendar" FromRole="Tran_DE_Calendar" ToRole="Tran_Proj_DE_Review" />
+        </EntityType>
+        <EntityType Name="Tran_EmailConfiguration">
+          <Key>
+            <PropertyRef Name="EmailConfigId" />
+          </Key>
+          <Property Name="EmailConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionalityId" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <NavigationProperty Name="MST_Employee" Relationship="Self.FK_Tran_EmailConfiguration_MST_Employee" FromRole="Tran_EmailConfiguration" ToRole="MST_Employee" />
+          <NavigationProperty Name="MST_Functionality" Relationship="Self.FK_Tran_EmailConfiguration_MST_Functionality" FromRole="Tran_EmailConfiguration" ToRole="MST_Functionality" />
+        </EntityType>
+        <EntityType Name="Tran_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="IDPAttributeId" />
+          </Key>
+          <Property Name="IDPAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_Attributes" Relationship="Self.FK_Tran_IDP_Attributes_MST_Attributes" FromRole="Tran_IDP_Attributes" ToRole="MST_Attributes" />
+          <NavigationProperty Name="MST_IDP" Relationship="Self.FK_Tran_IDP_Attributes_MST_IDP" FromRole="Tran_IDP_Attributes" ToRole="MST_IDP" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_DE_Attibute">
+          <Key>
+            <PropertyRef Name="DEReviewAttributeId" />
+          </Key>
+          <Property Name="DEReviewAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEReviewId" Type="Int32" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="FlagId" Type="Int32" />
+          <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recommendations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LatestUpdates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorrectiveActions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ETA" Type="DateTime" Precision="0" />
+          <Property Name="ReviewStatusId" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Flags" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_Flags" FromRole="Tran_Proj_DE_Attibute" ToRole="MST_Flags" />
+          <NavigationProperty Name="MST_ProjectAttributes" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes" FromRole="Tran_Proj_DE_Attibute" ToRole="MST_ProjectAttributes" />
+          <NavigationProperty Name="MST_ReviewStatus" Relationship="Self.FK_Tran_Proj_DE_Attibute_MST_ReviewStatus" FromRole="Tran_Proj_DE_Attibute" ToRole="MST_ReviewStatus" />
+          <NavigationProperty Name="Tran_Proj_DE_Review" Relationship="Self.FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review" FromRole="Tran_Proj_DE_Attibute" ToRole="Tran_Proj_DE_Review" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_DE_Review">
+          <Key>
+            <PropertyRef Name="DEReviewId" />
+          </Key>
+          <Property Name="DEReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEReviewCalendarId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_Tran_Proj_DE_Review_MST_Project" FromRole="Tran_Proj_DE_Review" ToRole="MST_Project" />
+          <NavigationProperty Name="Tran_DE_Calendar" Relationship="Self.FK_Tran_Proj_DE_Review_Tran_DE_Calendar" FromRole="Tran_Proj_DE_Review" ToRole="Tran_DE_Calendar" />
+          <NavigationProperty Name="Tran_Proj_DE_Attibute" Relationship="Self.FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review" FromRole="Tran_Proj_DE_Review" ToRole="Tran_Proj_DE_Attibute" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="ProjectIDPAttributeId" />
+          </Key>
+          <Property Name="ProjectIDPAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeValueId" Type="Int32" />
+          <Property Name="AttributeTextValue" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MST_Attributes" Relationship="Self.FK_ProjectIDPAttributes_Attributes_AttributeId" FromRole="Tran_Proj_IDP_Attributes" ToRole="MST_Attributes" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_ProjectIDPAttributes_Project_ProjectId" FromRole="Tran_Proj_IDP_Attributes" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_ProjCode_Details">
+          <Key>
+            <PropertyRef Name="ProjectTranId" />
+          </Key>
+          <Property Name="ProjectTranId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectCodeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_ProjectProjectCodes_Project_ProjectId" FromRole="Tran_Proj_ProjCode_Details" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_ProjectCodes" Relationship="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" FromRole="Tran_Proj_ProjCode_Details" ToRole="MST_ProjectCodes" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_Wkly_Attributes_Status">
+          <Key>
+            <PropertyRef Name="WeeklyStatusId" />
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="WeeklyStatusId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="FlagId" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Flags" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" FromRole="Tran_Proj_Wkly_Attributes_Status" ToRole="MST_Flags" />
+          <NavigationProperty Name="MST_ProjectAttributes" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes" FromRole="Tran_Proj_Wkly_Attributes_Status" ToRole="MST_ProjectAttributes" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Status" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status" FromRole="Tran_Proj_Wkly_Attributes_Status" ToRole="Tran_Proj_Wkly_Status" />
+        </EntityType>
+        <EntityType Name="Tran_Proj_Wkly_Status">
+          <Key>
+            <PropertyRef Name="WeeklyStatusId" />
+          </Key>
+          <Property Name="WeeklyStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekId" Type="Int32" Nullable="false" />
+          <Property Name="WeekStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="PriorOverallStatusId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentOverallStatusId" Type="Int32" Nullable="false" />
+          <Property Name="LatestUpdates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RiskItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IssueItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorrectiveActions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OverrideStatusId" Type="Int32" />
+          <Property Name="FlagsUpdatedByLevel" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MST_Flags" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Flags" FromRole="Tran_Proj_Wkly_Status" ToRole="MST_Flags" />
+          <NavigationProperty Name="MST_Flags1" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Flags1" FromRole="Tran_Proj_Wkly_Status" ToRole="MST_Flags" />
+          <NavigationProperty Name="MST_Project" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Project" FromRole="Tran_Proj_Wkly_Status" ToRole="MST_Project" />
+          <NavigationProperty Name="Tran_Proj_Wkly_Attributes_Status" Relationship="Self.FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status" FromRole="Tran_Proj_Wkly_Status" ToRole="Tran_Proj_Wkly_Attributes_Status" />
+        </EntityType>
+        <EntityType Name="Tran_Project_IDP_Attributes">
+          <Key>
+            <PropertyRef Name="ProjectIDPAttributeId" />
+          </Key>
+          <Property Name="ProjectIDPAttributeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MST_Account_MST_Geo">
+          <End Role="MST_Geo" Type="Self.MST_Geo" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Geo">
+              <PropertyRef Name="GeoId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="GeoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Account_MST_Sector">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="SectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Account_MST_Sector1">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Account">
+              <PropertyRef Name="SectorID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Account">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Account_AccountId">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCodes_Account_AccountId">
+          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
+          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MST_ProjectCodes">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Attributes_MST_AttributeTypes">
+          <End Role="MST_AttributeTypes" Type="Self.MST_AttributeTypes" Multiplicity="1" />
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_AttributeTypes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Principal>
+            <Dependent Role="MST_Attributes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIDPAttributes_Attributes_AttributeId">
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="1" />
+          <End Role="Tran_Proj_IDP_Attributes" Type="Self.Tran_Proj_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_IDP_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_IDP_Attributes_MST_Attributes">
+          <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="1" />
+          <End Role="Tran_IDP_Attributes" Type="Self.Tran_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_IDP_Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Employee_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="0..1" />
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Employee">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="PMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Employee1">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="EMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employee_EmployeeId">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="EMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Employee_PM_EmployeeId">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="PMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_EmailConfiguration_MST_Employee">
+          <End Role="MST_Employee" Type="Self.MST_Employee" Multiplicity="0..1" />
+          <End Role="Tran_EmailConfiguration" Type="Self.Tran_EmailConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Tran_EmailConfiguration">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_EstBasis">
+          <End Role="MST_EstBasis" Type="Self.MST_EstBasis" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_EstBasis">
+              <PropertyRef Name="EstBasisId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="EstBasisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="FlagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="0..1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="FlagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Flags">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="PriorOverallStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Flags1">
+          <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Flags">
+              <PropertyRef Name="FlagId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="CurrentOverallStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_EmailConfiguration_MST_Functionality">
+          <End Role="MST_Functionality" Type="Self.MST_Functionality" Multiplicity="0..1" />
+          <End Role="Tran_EmailConfiguration" Type="Self.Tran_EmailConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Functionality">
+              <PropertyRef Name="FunctionalityId" />
+            </Principal>
+            <Dependent Role="Tran_EmailConfiguration">
+              <PropertyRef Name="FunctionalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Geo">
+          <End Role="MST_Geo" Type="Self.MST_Geo" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Geo">
+              <PropertyRef Name="GeoId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="GeoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Questionnaire_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Questionnaire">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_IDP_IDPId">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="MST_Project_Temp">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_IDP_Attributes_MST_IDP">
+          <End Role="MST_IDP" Type="Self.MST_IDP" Multiplicity="1" />
+          <End Role="Tran_IDP_Attributes" Type="Self.Tran_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_IDP">
+              <PropertyRef Name="IDPId" />
+            </Principal>
+            <Dependent Role="Tran_IDP_Attributes">
+              <PropertyRef Name="IDPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Methodology">
+          <End Role="MST_Methodology" Type="Self.MST_Methodology" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Methodology">
+              <PropertyRef Name="MethodologyId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="MethodologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_NoW">
+          <End Role="MST_NoW" Type="Self.MST_NoW" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_NoW">
+              <PropertyRef Name="NoWId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="NoWId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Project_MST_Sector">
+          <End Role="MST_Sector" Type="Self.MST_Sector" Multiplicity="0..1" />
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Sector">
+              <PropertyRef Name="SectorId" />
+            </Principal>
+            <Dependent Role="MST_Project">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIDPAttributes_Project_ProjectId">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_IDP_Attributes" Type="Self.Tran_Proj_IDP_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_IDP_Attributes">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectCodes_Project_ProjectId">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Review_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Status_MST_Project">
+          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ProjectAttributes_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="0..1" />
+          <End Role="MST_ProjectAttributes1" Type="Self.MST_ProjectAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="MST_ProjectAttributes1">
+              <PropertyRef Name="ParentAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ReviewQuestion_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="MST_ReviewQuestion" Type="Self.MST_ReviewQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="MST_ReviewQuestion">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes">
+          <End Role="MST_ProjectAttributes" Type="Self.MST_ProjectAttributes" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
+          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ProjectCodes">
+              <PropertyRef Name="ProjectCodeId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
+              <PropertyRef Name="ProjectCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_Questionnaire_MST_ReviewType">
+          <End Role="MST_ReviewType" Type="Self.MST_ReviewType" Multiplicity="1" />
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewType">
+              <PropertyRef Name="ReviewTypeId" />
+            </Principal>
+            <Dependent Role="MST_Questionnaire">
+              <PropertyRef Name="ReviewTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MST_ReviewQuestion_MST_Questionnaire">
+          <End Role="MST_Questionnaire" Type="Self.MST_Questionnaire" Multiplicity="1" />
+          <End Role="MST_ReviewQuestion" Type="Self.MST_ReviewQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="MST_ReviewQuestion">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_DE_Calendar_MST_ReviewStatus">
+          <End Role="MST_ReviewStatus" Type="Self.MST_ReviewStatus" Multiplicity="1" />
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewStatus">
+              <PropertyRef Name="ReviewStatusId" />
+            </Principal>
+            <Dependent Role="Tran_DE_Calendar">
+              <PropertyRef Name="ReviewStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_MST_ReviewStatus">
+          <End Role="MST_ReviewStatus" Type="Self.MST_ReviewStatus" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_ReviewStatus">
+              <PropertyRef Name="ReviewStatusId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="ReviewStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Review_Tran_DE_Calendar">
+          <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="1" />
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_DE_Calendar">
+              <PropertyRef Name="DEReviewCalendarId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="DEReviewCalendarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review">
+          <End Role="Tran_Proj_DE_Review" Type="Self.Tran_Proj_DE_Review" Multiplicity="0..1" />
+          <End Role="Tran_Proj_DE_Attibute" Type="Self.Tran_Proj_DE_Attibute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_Proj_DE_Review">
+              <PropertyRef Name="DEReviewId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_DE_Attibute">
+              <PropertyRef Name="DEReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status">
+          <End Role="Tran_Proj_Wkly_Status" Type="Self.Tran_Proj_Wkly_Status" Multiplicity="1" />
+          <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="WeeklyStatusId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_Wkly_Attributes_Status">
+              <PropertyRef Name="WeeklyStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DashboardEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MST_Account" EntityType="Self.MST_Account" />
+          <EntitySet Name="MST_Attributes" EntityType="Self.MST_Attributes" />
+          <EntitySet Name="MST_AttributeTypes" EntityType="Self.MST_AttributeTypes" />
+          <EntitySet Name="MST_AttributeValues" EntityType="Self.MST_AttributeValues" />
+          <EntitySet Name="MST_Employee" EntityType="Self.MST_Employee" />
+          <EntitySet Name="MST_EstBasis" EntityType="Self.MST_EstBasis" />
+          <EntitySet Name="MST_Flags" EntityType="Self.MST_Flags" />
+          <EntitySet Name="MST_Functionality" EntityType="Self.MST_Functionality" />
+          <EntitySet Name="MST_Geo" EntityType="Self.MST_Geo" />
+          <EntitySet Name="MST_IDP" EntityType="Self.MST_IDP" />
+          <EntitySet Name="MST_Methodology" EntityType="Self.MST_Methodology" />
+          <EntitySet Name="MST_NoW" EntityType="Self.MST_NoW" />
+          <EntitySet Name="MST_Project" EntityType="Self.MST_Project" />
+          <EntitySet Name="MST_Project_Temp" EntityType="Self.MST_Project_Temp" />
+          <EntitySet Name="MST_ProjectAttributes" EntityType="Self.MST_ProjectAttributes" />
+          <EntitySet Name="MST_ProjectCodes" EntityType="Self.MST_ProjectCodes" />
+          <EntitySet Name="MST_Questionnaire" EntityType="Self.MST_Questionnaire" />
+          <EntitySet Name="MST_ReviewQuestion" EntityType="Self.MST_ReviewQuestion" />
+          <EntitySet Name="MST_ReviewStatus" EntityType="Self.MST_ReviewStatus" />
+          <EntitySet Name="MST_ReviewType" EntityType="Self.MST_ReviewType" />
+          <EntitySet Name="MST_Sector" EntityType="Self.MST_Sector" />
+          <EntitySet Name="Tran_DE_Calendar" EntityType="Self.Tran_DE_Calendar" />
+          <EntitySet Name="Tran_EmailConfiguration" EntityType="Self.Tran_EmailConfiguration" />
+          <EntitySet Name="Tran_IDP_Attributes" EntityType="Self.Tran_IDP_Attributes" />
+          <EntitySet Name="Tran_Proj_DE_Attibute" EntityType="Self.Tran_Proj_DE_Attibute" />
+          <EntitySet Name="Tran_Proj_DE_Review" EntityType="Self.Tran_Proj_DE_Review" />
+          <EntitySet Name="Tran_Proj_IDP_Attributes" EntityType="Self.Tran_Proj_IDP_Attributes" />
+          <EntitySet Name="Tran_Proj_ProjCode_Details" EntityType="Self.Tran_Proj_ProjCode_Details" />
+          <EntitySet Name="Tran_Proj_Wkly_Attributes_Status" EntityType="Self.Tran_Proj_Wkly_Attributes_Status" />
+          <EntitySet Name="Tran_Proj_Wkly_Status" EntityType="Self.Tran_Proj_Wkly_Status" />
+          <EntitySet Name="Tran_Project_IDP_Attributes" EntityType="Self.Tran_Project_IDP_Attributes" />
+          <AssociationSet Name="FK_MST_Account_MST_Geo" Association="Self.FK_MST_Account_MST_Geo">
+            <End Role="MST_Geo" EntitySet="MST_Geo" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Account_MST_Sector" Association="Self.FK_MST_Account_MST_Sector">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Account_MST_Sector1" Association="Self.FK_MST_Account_MST_Sector1">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Account" EntitySet="MST_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Account" Association="Self.FK_MST_Project_MST_Account">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Account_AccountId" Association="Self.FK_Project_Account_AccountId">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCodes_Account_AccountId" Association="Self.FK_ProjectCodes_Account_AccountId">
+            <End Role="MST_Account" EntitySet="MST_Account" />
+            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Attributes_MST_AttributeTypes" Association="Self.FK_MST_Attributes_MST_AttributeTypes">
+            <End Role="MST_AttributeTypes" EntitySet="MST_AttributeTypes" />
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIDPAttributes_Attributes_AttributeId" Association="Self.FK_ProjectIDPAttributes_Attributes_AttributeId">
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+            <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_IDP_Attributes_MST_Attributes" Association="Self.FK_Tran_IDP_Attributes_MST_Attributes">
+            <End Role="MST_Attributes" EntitySet="MST_Attributes" />
+            <End Role="Tran_IDP_Attributes" EntitySet="Tran_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Employee_MST_IDP" Association="Self.FK_MST_Employee_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Employee" Association="Self.FK_MST_Project_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Employee1" Association="Self.FK_MST_Project_MST_Employee1">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employee_EmployeeId" Association="Self.FK_Project_Employee_EmployeeId">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Employee_PM_EmployeeId" Association="Self.FK_Project_Employee_PM_EmployeeId">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_Employee" Association="Self.FK_Tran_DE_Calendar_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_EmailConfiguration_MST_Employee" Association="Self.FK_Tran_EmailConfiguration_MST_Employee">
+            <End Role="MST_Employee" EntitySet="MST_Employee" />
+            <End Role="Tran_EmailConfiguration" EntitySet="Tran_EmailConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_EstBasis" Association="Self.FK_MST_Project_MST_EstBasis">
+            <End Role="MST_EstBasis" EntitySet="MST_EstBasis" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_Flags" Association="Self.FK_Tran_Proj_DE_Attibute_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Flags" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Flags">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Flags1" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Flags1">
+            <End Role="MST_Flags" EntitySet="MST_Flags" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_EmailConfiguration_MST_Functionality" Association="Self.FK_Tran_EmailConfiguration_MST_Functionality">
+            <End Role="MST_Functionality" EntitySet="MST_Functionality" />
+            <End Role="Tran_EmailConfiguration" EntitySet="Tran_EmailConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Geo" Association="Self.FK_MST_Project_MST_Geo">
+            <End Role="MST_Geo" EntitySet="MST_Geo" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_IDP" Association="Self.FK_MST_Project_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Questionnaire_MST_IDP" Association="Self.FK_MST_Questionnaire_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_IDP_IDPId" Association="Self.FK_Project_IDP_IDPId">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_IDP_Attributes_MST_IDP" Association="Self.FK_Tran_IDP_Attributes_MST_IDP">
+            <End Role="MST_IDP" EntitySet="MST_IDP" />
+            <End Role="Tran_IDP_Attributes" EntitySet="Tran_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Methodology" Association="Self.FK_MST_Project_MST_Methodology">
+            <End Role="MST_Methodology" EntitySet="MST_Methodology" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_NoW" Association="Self.FK_MST_Project_MST_NoW">
+            <End Role="MST_NoW" EntitySet="MST_NoW" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Project_MST_Sector" Association="Self.FK_MST_Project_MST_Sector">
+            <End Role="MST_Sector" EntitySet="MST_Sector" />
+            <End Role="MST_Project" EntitySet="MST_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIDPAttributes_Project_ProjectId" Association="Self.FK_ProjectIDPAttributes_Project_ProjectId">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectCodes_Project_ProjectId" Association="Self.FK_ProjectProjectCodes_Project_ProjectId">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_Project" Association="Self.FK_Tran_DE_Calendar_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Review_MST_Project" Association="Self.FK_Tran_Proj_DE_Review_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Project" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Project">
+            <End Role="MST_Project" EntitySet="MST_Project" />
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ProjectAttributes_MST_ProjectAttributes" Association="Self.FK_MST_ProjectAttributes_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="MST_ProjectAttributes1" EntitySet="MST_ProjectAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ReviewQuestion_MST_ProjectAttributes" Association="Self.FK_MST_ReviewQuestion_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="MST_ReviewQuestion" EntitySet="MST_ReviewQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes" Association="Self.FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes">
+            <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" Association="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
+            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_Questionnaire_MST_ReviewType" Association="Self.FK_MST_Questionnaire_MST_ReviewType">
+            <End Role="MST_ReviewType" EntitySet="MST_ReviewType" />
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MST_ReviewQuestion_MST_Questionnaire" Association="Self.FK_MST_ReviewQuestion_MST_Questionnaire">
+            <End Role="MST_Questionnaire" EntitySet="MST_Questionnaire" />
+            <End Role="MST_ReviewQuestion" EntitySet="MST_ReviewQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_DE_Calendar_MST_ReviewStatus" Association="Self.FK_Tran_DE_Calendar_MST_ReviewStatus">
+            <End Role="MST_ReviewStatus" EntitySet="MST_ReviewStatus" />
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_MST_ReviewStatus" Association="Self.FK_Tran_Proj_DE_Attibute_MST_ReviewStatus">
+            <End Role="MST_ReviewStatus" EntitySet="MST_ReviewStatus" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Review_Tran_DE_Calendar" Association="Self.FK_Tran_Proj_DE_Review_Tran_DE_Calendar">
+            <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review" Association="Self.FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review">
+            <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
+            <End Role="Tran_Proj_DE_Attibute" EntitySet="Tran_Proj_DE_Attibute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status">
+            <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+            <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
+          </AssociationSet>
+          <FunctionImport Name="ufn_GetWeekList" ReturnType="Collection(DashboardModel.ufn_GetWeekList_Result)" IsComposable="true" />
+          <FunctionImport Name="GetDEDashboardDetails" ReturnType="Collection(DashboardModel.GetDEDashboardDetails_Result)">
+            <Parameter Name="IDPId" Mode="In" Type="Int32" />
+            <Parameter Name="AccountId" Mode="In" Type="Int32" />
+            <Parameter Name="GeoId" Mode="In" Type="Int32" />
+            <Parameter Name="SectorId" Mode="In" Type="Int32" />
+            <Parameter Name="WeekID" Mode="In" Type="Int32" />
+            <Parameter Name="IsStrategic" Mode="In" Type="Boolean" />
+            <Parameter Name="IsRA" Mode="In" Type="Boolean" />
+            <Parameter Name="SectorId2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDEDashboardDetails_New" ReturnType="Collection(DashboardModel.GetDEDashboardDetails_New_Result)">
+            <Parameter Name="AccountId" Mode="In" Type="Int32" />
+            <Parameter Name="GeoId" Mode="In" Type="Int32" />
+            <Parameter Name="SectorId" Mode="In" Type="Int32" />
+            <Parameter Name="IsStrategic" Mode="In" Type="Boolean" />
+            <Parameter Name="IsRA" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetProjectAttributes" ReturnType="Collection(DashboardModel.GetProjectAttributes_Result)" />
+          <FunctionImport Name="RetrieveProjectDetails" ReturnType="Collection(DashboardModel.RetrieveProjectDetails_Result)">
+            <Parameter Name="AccountId" Mode="In" Type="Int32" />
+            <Parameter Name="GeoId" Mode="In" Type="Int32" />
+            <Parameter Name="SectorId" Mode="In" Type="Int32" />
+            <Parameter Name="IsStrategic" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="RetrieveProjectDetailsByProID">
+          <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Tran_Proj_Wkly_Status_SelectAll" ReturnType="Collection(DashboardModel.Tran_Proj_Wkly_Status_SelectAll_Result)">
+            <Parameter Name="ProID" Mode="In" Type="Int32" />
+            <Parameter Name="WeekID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetDEDashboardDetails_Result">
+          <Property Type="Int32" Name="IDPId" Nullable="true" />
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+          <Property Type="String" Name="ProjectCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="AccountId" Nullable="true" />
+          <Property Type="String" Name="AccountName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="GeoID" Nullable="true" />
+          <Property Type="String" Name="GeoName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SectorID" Nullable="true" />
+          <Property Type="String" Name="SectorName" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsStrategic" Nullable="true" />
+          <Property Type="DateTime" Name="RARSince" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PriorOverallStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentOverallStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LatestUpdates" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RiskItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IssueItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorrectiveActions" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="WeekId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetDEDashboardDetails_New_Result">
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+          <Property Type="String" Name="ProjectCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="AccountId" Nullable="true" />
+          <Property Type="String" Name="AccountName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="GeoID" Nullable="true" />
+          <Property Type="String" Name="GeoName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SectorID" Nullable="true" />
+          <Property Type="String" Name="SectorName" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsStrategic" Nullable="true" />
+          <Property Type="DateTime" Name="RARSince" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PriorOverallStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentOverallStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LatestUpdates" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RiskItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IssueItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorrectiveActions" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="WeekId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProjectAttributes_Result">
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="Int32" Name="AttributeId" Nullable="true" />
+          <Property Type="String" Name="AttributeName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="WeeklyStatusId" Nullable="true" />
+          <Property Type="String" Name="FlagName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="WeekId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RetrieveProjectDetails_Result">
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+          <Property Type="String" Name="ProjectCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="AccountId" Nullable="true" />
+          <Property Type="String" Name="AccountName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="GeoID" Nullable="true" />
+          <Property Type="Int32" Name="SectorID" Nullable="true" />
+          <Property Type="Boolean" Name="IsStrategic" Nullable="true" />
+          <Property Type="String" Name="PriorOverallStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentOverallStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LatestUpdates" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RiskItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IssueItems" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorrectiveActions" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="WeekId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Tran_Proj_Wkly_Status_SelectAll_Result">
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="String" Name="ProjectCode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AccountId" Nullable="true" />
+          <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IDPId" Nullable="true" />
+          <Property Type="Int32" Name="EMId" Nullable="true" />
+          <Property Type="Int32" Name="PMId" Nullable="true" />
+          <Property Type="Int32" Name="GeoId" Nullable="true" />
+          <Property Type="Int32" Name="SectorId" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="MethodologyId" Nullable="true" />
+          <Property Type="Int32" Name="NoWId" Nullable="true" />
+          <Property Type="Int32" Name="EstBasisId" Nullable="true" />
+          <Property Type="DateTime" Name="LastDEReviewDate" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="LastIDQADate" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="LastSMRDate" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="IsStrategic" Nullable="true" />
+          <Property Type="Int32" Name="WeeklyStatusId" Nullable="true" />
+          <Property Type="Int32" Name="WeekId" Nullable="true" />
+          <Property Type="DateTime" Name="WeekStartDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="PriorOverallStatusId" Nullable="true" />
+          <Property Type="Int32" Name="CurrentOverallStatusId" Nullable="true" />
+          <Property Type="String" Name="LatestUpdates" Nullable="true" />
+          <Property Type="String" Name="RiskItems" Nullable="true" />
+          <Property Type="String" Name="IssueItems" Nullable="true" />
+          <Property Type="String" Name="CorrectiveActions" Nullable="true" />
+          <Property Type="Int32" Name="OverrideStatusId" Nullable="true" />
+          <Property Type="Int32" Name="FlagsUpdatedByLevel" Nullable="true" />
+          <Property Type="Int32" Name="AttributeId" Nullable="true" />
+          <Property Type="String" Name="AttributeName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="FlagId" Nullable="true" />
+          <Property Type="String" Name="FlagName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IsCurrentWk" Nullable="true" />
+          <Property Type="Int32" Name="IsPreviousWk" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DashboardModelStoreContainer" CdmEntityContainer="DashboardEntities">
+          <EntitySetMapping Name="MST_Account">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Account">
+              <MappingFragment StoreEntitySet="MST_Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="SectorID2" ColumnName="SectorID2" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Attributes">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Attributes">
+              <MappingFragment StoreEntitySet="MST_Attributes">
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="AttributeStartDate" ColumnName="AttributeStartDate" />
+                <ScalarProperty Name="AttributeEndDate" ColumnName="AttributeEndDate" />
+                <ScalarProperty Name="AttributeTypeId" ColumnName="AttributeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_AttributeTypes">
+            <EntityTypeMapping TypeName="DashboardModel.MST_AttributeTypes">
+              <MappingFragment StoreEntitySet="MST_AttributeTypes">
+                <ScalarProperty Name="AttributeTypeId" ColumnName="AttributeTypeId" />
+                <ScalarProperty Name="AttributeTypeName" ColumnName="AttributeTypeName" />
+                <ScalarProperty Name="AttributeTypeCode" ColumnName="AttributeTypeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_AttributeValues">
+            <EntityTypeMapping TypeName="DashboardModel.MST_AttributeValues">
+              <MappingFragment StoreEntitySet="MST_AttributeValues">
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeValue" ColumnName="AttributeValue" />
+                <ScalarProperty Name="AttributeText" ColumnName="AttributeText" />
+                <ScalarProperty Name="AttributeValueId" ColumnName="AttributeValueId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Employee">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Employee">
+              <MappingFragment StoreEntitySet="MST_Employee">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="WindowsId" ColumnName="WindowsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_EstBasis">
+            <EntityTypeMapping TypeName="DashboardModel.MST_EstBasis">
+              <MappingFragment StoreEntitySet="MST_EstBasis">
+                <ScalarProperty Name="EstBasisId" ColumnName="EstBasisId" />
+                <ScalarProperty Name="EstBasisName" ColumnName="EstBasisName" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Flags">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Flags">
+              <MappingFragment StoreEntitySet="MST_Flags">
+                <ScalarProperty Name="FlagId" ColumnName="FlagId" />
+                <ScalarProperty Name="FlagName" ColumnName="FlagName" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Functionality">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Functionality">
+              <MappingFragment StoreEntitySet="MST_Functionality">
+                <ScalarProperty Name="FunctionalityId" ColumnName="FunctionalityId" />
+                <ScalarProperty Name="FunctionalityName" ColumnName="FunctionalityName" />
+                <ScalarProperty Name="FunctionalityCode" ColumnName="FunctionalityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Geo">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Geo">
+              <MappingFragment StoreEntitySet="MST_Geo">
+                <ScalarProperty Name="GeoId" ColumnName="GeoId" />
+                <ScalarProperty Name="GeoName" ColumnName="GeoName" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_IDP">
+            <EntityTypeMapping TypeName="DashboardModel.MST_IDP">
+              <MappingFragment StoreEntitySet="MST_IDP">
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="IDPName" ColumnName="IDPName" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Methodology">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Methodology">
+              <MappingFragment StoreEntitySet="MST_Methodology">
+                <ScalarProperty Name="MethodologyId" ColumnName="MethodologyId" />
+                <ScalarProperty Name="MethodologyName" ColumnName="MethodologyName" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_NoW">
+            <EntityTypeMapping TypeName="DashboardModel.MST_NoW">
+              <MappingFragment StoreEntitySet="MST_NoW">
+                <ScalarProperty Name="NoWId" ColumnName="NoWId" />
+                <ScalarProperty Name="NoWName" ColumnName="NoWName" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Project">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Project">
+              <MappingFragment StoreEntitySet="MST_Project">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="EMId" ColumnName="EMId" />
+                <ScalarProperty Name="PMId" ColumnName="PMId" />
+                <ScalarProperty Name="GeoId" ColumnName="GeoId" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="MethodologyId" ColumnName="MethodologyId" />
+                <ScalarProperty Name="NoWId" ColumnName="NoWId" />
+                <ScalarProperty Name="EstBasisId" ColumnName="EstBasisId" />
+                <ScalarProperty Name="LastDEReviewDate" ColumnName="LastDEReviewDate" />
+                <ScalarProperty Name="LastIDQADate" ColumnName="LastIDQADate" />
+                <ScalarProperty Name="LastSMRDate" ColumnName="LastSMRDate" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Project_Temp">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Project_Temp">
+              <MappingFragment StoreEntitySet="MST_Project_Temp">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="EMId" ColumnName="EMId" />
+                <ScalarProperty Name="PMId" ColumnName="PMId" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LastDEReviewDate" ColumnName="LastDEReviewDate" />
+                <ScalarProperty Name="LastIDQADate" ColumnName="LastIDQADate" />
+                <ScalarProperty Name="LastSMRDate" ColumnName="LastSMRDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_ProjectAttributes">
+            <EntityTypeMapping TypeName="DashboardModel.MST_ProjectAttributes">
+              <MappingFragment StoreEntitySet="MST_ProjectAttributes">
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="ParentAttributeId" ColumnName="ParentAttributeId" />
+                <ScalarProperty Name="IsDE" ColumnName="IsDE" />
+                <ScalarProperty Name="EffectiveStartDate" ColumnName="EffectiveStartDate" />
+                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
+                <ScalarProperty Name="SampleQuestions" ColumnName="SampleQuestions" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_ProjectCodes">
+            <EntityTypeMapping TypeName="DashboardModel.MST_ProjectCodes">
+              <MappingFragment StoreEntitySet="MST_ProjectCodes">
+                <ScalarProperty Name="ProjectCodeId" ColumnName="ProjectCodeId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="OnshoreHC" ColumnName="OnshoreHC" />
+                <ScalarProperty Name="OffShoreHC" ColumnName="OffShoreHC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Questionnaire">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Questionnaire">
+              <MappingFragment StoreEntitySet="MST_Questionnaire">
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="QuestionnaireName" ColumnName="QuestionnaireName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ReviewTypeId" ColumnName="ReviewTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_ReviewQuestion">
+            <EntityTypeMapping TypeName="DashboardModel.MST_ReviewQuestion">
+              <MappingFragment StoreEntitySet="MST_ReviewQuestion">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+                <ScalarProperty Name="QuestionDescription" ColumnName="QuestionDescription" />
+                <ScalarProperty Name="QuestionGuideLines" ColumnName="QuestionGuideLines" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_ReviewStatus">
+            <EntityTypeMapping TypeName="DashboardModel.MST_ReviewStatus">
+              <MappingFragment StoreEntitySet="MST_ReviewStatus">
+                <ScalarProperty Name="ReviewStatusId" ColumnName="ReviewStatusId" />
+                <ScalarProperty Name="ReviewStatusName" ColumnName="ReviewStatusName" />
+                <ScalarProperty Name="ReviewStatusCode" ColumnName="ReviewStatusCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_ReviewType">
+            <EntityTypeMapping TypeName="DashboardModel.MST_ReviewType">
+              <MappingFragment StoreEntitySet="MST_ReviewType">
+                <ScalarProperty Name="ReviewTypeId" ColumnName="ReviewTypeId" />
+                <ScalarProperty Name="ReviewTypeName" ColumnName="ReviewTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MST_Sector">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Sector">
+              <MappingFragment StoreEntitySet="MST_Sector">
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="ParentSectorId" ColumnName="ParentSectorId" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_DE_Calendar">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_DE_Calendar">
+              <MappingFragment StoreEntitySet="Tran_DE_Calendar">
+                <ScalarProperty Name="DEReviewCalendarId" ColumnName="DEReviewCalendarId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="ReviewStatusId" ColumnName="ReviewStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_EmailConfiguration">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_EmailConfiguration">
+              <MappingFragment StoreEntitySet="Tran_EmailConfiguration">
+                <ScalarProperty Name="EmailConfigId" ColumnName="EmailConfigId" />
+                <ScalarProperty Name="FunctionalityId" ColumnName="FunctionalityId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_IDP_Attributes">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_IDP_Attributes">
+              <MappingFragment StoreEntitySet="Tran_IDP_Attributes">
+                <ScalarProperty Name="IDPAttributeId" ColumnName="IDPAttributeId" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_DE_Attibute">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_DE_Attibute">
+              <MappingFragment StoreEntitySet="Tran_Proj_DE_Attibute">
+                <ScalarProperty Name="DEReviewAttributeId" ColumnName="DEReviewAttributeId" />
+                <ScalarProperty Name="DEReviewId" ColumnName="DEReviewId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="FlagId" ColumnName="FlagId" />
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+                <ScalarProperty Name="Recommendations" ColumnName="Recommendations" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="ReviewStatusId" ColumnName="ReviewStatusId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_DE_Review">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_DE_Review">
+              <MappingFragment StoreEntitySet="Tran_Proj_DE_Review">
+                <ScalarProperty Name="DEReviewId" ColumnName="DEReviewId" />
+                <ScalarProperty Name="DEReviewCalendarId" ColumnName="DEReviewCalendarId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_IDP_Attributes">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_IDP_Attributes">
+              <MappingFragment StoreEntitySet="Tran_Proj_IDP_Attributes">
+                <ScalarProperty Name="ProjectIDPAttributeId" ColumnName="ProjectIDPAttributeId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeValueId" ColumnName="AttributeValueId" />
+                <ScalarProperty Name="AttributeTextValue" ColumnName="AttributeTextValue" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_ProjCode_Details">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_ProjCode_Details">
+              <MappingFragment StoreEntitySet="Tran_Proj_ProjCode_Details">
+                <ScalarProperty Name="ProjectTranId" ColumnName="ProjectTranId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCodeId" ColumnName="ProjectCodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_Wkly_Attributes_Status">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_Wkly_Attributes_Status">
+              <MappingFragment StoreEntitySet="Tran_Proj_Wkly_Attributes_Status">
+                <ScalarProperty Name="WeeklyStatusId" ColumnName="WeeklyStatusId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="FlagId" ColumnName="FlagId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Proj_Wkly_Status">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Proj_Wkly_Status">
+              <MappingFragment StoreEntitySet="Tran_Proj_Wkly_Status">
+                <ScalarProperty Name="WeeklyStatusId" ColumnName="WeeklyStatusId" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+                <ScalarProperty Name="WeekStartDate" ColumnName="WeekStartDate" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="PriorOverallStatusId" ColumnName="PriorOverallStatusId" />
+                <ScalarProperty Name="CurrentOverallStatusId" ColumnName="CurrentOverallStatusId" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="RiskItems" ColumnName="RiskItems" />
+                <ScalarProperty Name="IssueItems" ColumnName="IssueItems" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="OverrideStatusId" ColumnName="OverrideStatusId" />
+                <ScalarProperty Name="FlagsUpdatedByLevel" ColumnName="FlagsUpdatedByLevel" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Project_IDP_Attributes">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Project_IDP_Attributes">
+              <MappingFragment StoreEntitySet="Tran_Project_IDP_Attributes">
+                <ScalarProperty Name="ProjectIDPAttributeId" ColumnName="ProjectIDPAttributeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="DashboardModel.Store.ufn_GetWeekList" FunctionImportName="ufn_GetWeekList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.ufn_GetWeekList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DT" ColumnName="DT" />
+                <ScalarProperty Name="Edt" ColumnName="Edt" />
+                <ScalarProperty Name="Wk" ColumnName="Wk" />
+                <ScalarProperty Name="WkPeriod" ColumnName="WkPeriod" />
+                <ScalarProperty Name="WkStartDay" ColumnName="WkStartDay" />
+                <ScalarProperty Name="WkEndDay" ColumnName="WkEndDay" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDEDashboardDetails" FunctionName="DashboardModel.Store.GetDEDashboardDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.GetDEDashboardDetails_Result">
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="GeoName" ColumnName="GeoName" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="RARSince" ColumnName="RARSince" />
+                <ScalarProperty Name="PriorOverallStatus" ColumnName="PriorOverallStatus" />
+                <ScalarProperty Name="CurrentOverallStatus" ColumnName="CurrentOverallStatus" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="RiskItems" ColumnName="RiskItems" />
+                <ScalarProperty Name="IssueItems" ColumnName="IssueItems" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDEDashboardDetails_New" FunctionName="DashboardModel.Store.GetDEDashboardDetails_New">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.GetDEDashboardDetails_New_Result">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="GeoName" ColumnName="GeoName" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="RARSince" ColumnName="RARSince" />
+                <ScalarProperty Name="PriorOverallStatus" ColumnName="PriorOverallStatus" />
+                <ScalarProperty Name="CurrentOverallStatus" ColumnName="CurrentOverallStatus" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="RiskItems" ColumnName="RiskItems" />
+                <ScalarProperty Name="IssueItems" ColumnName="IssueItems" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProjectAttributes" FunctionName="DashboardModel.Store.GetProjectAttributes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.GetProjectAttributes_Result">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="WeeklyStatusId" ColumnName="WeeklyStatusId" />
+                <ScalarProperty Name="FlagName" ColumnName="FlagName" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetrieveProjectDetails" FunctionName="DashboardModel.Store.RetrieveProjectDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.RetrieveProjectDetails_Result">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="PriorOverallStatus" ColumnName="PriorOverallStatus" />
+                <ScalarProperty Name="CurrentOverallStatus" ColumnName="CurrentOverallStatus" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="RiskItems" ColumnName="RiskItems" />
+                <ScalarProperty Name="IssueItems" ColumnName="IssueItems" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetrieveProjectDetailsByProID" FunctionName="DashboardModel.Store.RetrieveProjectDetailsByProID" />
+          <FunctionImportMapping FunctionImportName="Tran_Proj_Wkly_Status_SelectAll" FunctionName="DashboardModel.Store.Tran_Proj_Wkly_Status_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.Tran_Proj_Wkly_Status_SelectAll_Result">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
+                <ScalarProperty Name="EMId" ColumnName="EMId" />
+                <ScalarProperty Name="PMId" ColumnName="PMId" />
+                <ScalarProperty Name="GeoId" ColumnName="GeoId" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="MethodologyId" ColumnName="MethodologyId" />
+                <ScalarProperty Name="NoWId" ColumnName="NoWId" />
+                <ScalarProperty Name="EstBasisId" ColumnName="EstBasisId" />
+                <ScalarProperty Name="LastDEReviewDate" ColumnName="LastDEReviewDate" />
+                <ScalarProperty Name="LastIDQADate" ColumnName="LastIDQADate" />
+                <ScalarProperty Name="LastSMRDate" ColumnName="LastSMRDate" />
+                <ScalarProperty Name="IsStrategic" ColumnName="IsStrategic" />
+                <ScalarProperty Name="WeeklyStatusId" ColumnName="WeeklyStatusId" />
+                <ScalarProperty Name="WeekId" ColumnName="WeekId" />
+                <ScalarProperty Name="WeekStartDate" ColumnName="WeekStartDate" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="PriorOverallStatusId" ColumnName="PriorOverallStatusId" />
+                <ScalarProperty Name="CurrentOverallStatusId" ColumnName="CurrentOverallStatusId" />
+                <ScalarProperty Name="LatestUpdates" ColumnName="LatestUpdates" />
+                <ScalarProperty Name="RiskItems" ColumnName="RiskItems" />
+                <ScalarProperty Name="IssueItems" ColumnName="IssueItems" />
+                <ScalarProperty Name="CorrectiveActions" ColumnName="CorrectiveActions" />
+                <ScalarProperty Name="OverrideStatusId" ColumnName="OverrideStatusId" />
+                <ScalarProperty Name="FlagsUpdatedByLevel" ColumnName="FlagsUpdatedByLevel" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="FlagId" ColumnName="FlagId" />
+                <ScalarProperty Name="FlagName" ColumnName="FlagName" />
+                <ScalarProperty Name="IsCurrentWk" ColumnName="IsCurrentWk" />
+                <ScalarProperty Name="IsPreviousWk" ColumnName="IsPreviousWk" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

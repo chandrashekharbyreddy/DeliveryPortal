@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93a7634f9c55451c85378aa9cf89ac2b" Name="Diagram1">
+        <EntityTypeShape EntityType="DashboardModel.MST_Account" Width="1.5" PointX="6" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Attributes" Width="1.5" PointX="11.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_AttributeTypes" Width="1.5" PointX="9" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_AttributeValues" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Employee" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_EstBasis" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Flags" Width="1.5" PointX="15.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Functionality" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Geo" Width="1.5" PointX="3.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_IDP" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Methodology" Width="1.5" PointX="6" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_NoW" Width="1.5" PointX="6" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Project" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Project_Temp" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_ProjectAttributes" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_ProjectCodes" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Questionnaire" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_ReviewQuestion" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_ReviewStatus" Width="1.5" PointX="8.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_ReviewType" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.MST_Sector" Width="1.5" PointX="3.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_DE_Calendar" Width="1.5" PointX="10.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_EmailConfiguration" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_IDP_Attributes" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_DE_Attibute" Width="1.5" PointX="18" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_DE_Review" Width="1.5" PointX="15.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_IDP_Attributes" Width="1.5" PointX="13.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_ProjCode_Details" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_Wkly_Attributes_Status" Width="1.5" PointX="12.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Proj_Wkly_Status" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DashboardModel.Tran_Project_IDP_Attributes" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Account_MST_Geo" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Account_MST_Sector" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Account_MST_Sector1" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Project_Account_AccountId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_ProjectCodes_Account_AccountId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Attributes_MST_AttributeTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_ProjectIDPAttributes_Attributes_AttributeId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_IDP_Attributes_MST_Attributes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Employee_MST_IDP" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Project_Employee_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Project_Employee_PM_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_DE_Calendar_MST_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_EmailConfiguration_MST_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_EstBasis" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Attibute_MST_Flags" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Status_MST_Flags" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Status_MST_Flags1" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_EmailConfiguration_MST_Functionality" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Geo" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_IDP" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Questionnaire_MST_IDP" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Project_IDP_IDPId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_IDP_Attributes_MST_IDP" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Methodology" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_NoW" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Project_MST_Sector" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_ProjectIDPAttributes_Project_ProjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_ProjectProjectCodes_Project_ProjectId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_DE_Calendar_MST_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Review_MST_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Status_MST_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_ProjectAttributes_MST_ProjectAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_ReviewQuestion_MST_ProjectAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Attibute_MST_ProjectAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Attributes_Status_MST_ProjectAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_Questionnaire_MST_ReviewType" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_MST_ReviewQuestion_MST_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_DE_Calendar_MST_ReviewStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Attibute_MST_ReviewStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Review_Tran_DE_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_DE_Attibute_Tran_Proj_DE_Review" ManuallyRouted="false" />
+        <AssociationConnector Association="DashboardModel.FK_Tran_Proj_Wkly_Attributes_Status_Tran_Proj_Wkly_Status" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
