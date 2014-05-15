@@ -18,7 +18,7 @@ namespace DeliveryPortalDL
         public int ProjectId { get; set; }
         public int ProjectCodeId { get; set; }
     
-        public virtual MST_Project MST_Project { get; set; }
+        public virtual MST_Project_Temp MST_Project_Temp { get; set; }
         public virtual MST_ProjectCodes MST_ProjectCodes { get; set; }
     }
 }

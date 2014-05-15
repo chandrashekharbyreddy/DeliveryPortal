@@ -1411,7 +1411,7 @@ namespace DeliveryPortalDL
         {
             int newProjectCodeId = -1;
             MST_ProjectCodes mstProjCode = new MST_ProjectCodes();
-            mstProjCode.AccountId = projCode.AccountId;
+            //mstProjCode.AccountId = projCode.AccountId;
             mstProjCode.ProjectCode = projCode.ProjectCode;
             mstProjCode.OnshoreHC = projCode.OnshoreHC;
             mstProjCode.OffShoreHC = projCode.OffShoreHC;
@@ -1428,7 +1428,7 @@ namespace DeliveryPortalDL
             MST_ProjectCodes mstProjCode = _context.MST_ProjectCodes.Where(p => p.ProjectCodeId == projCode.ProjectCodeId).FirstOrDefault();
             if (mstProjCode!=null) 
             {
-                mstProjCode.AccountId = projCode.AccountId;
+                //mstProjCode.AccountId = projCode.AccountId;
                 mstProjCode.ProjectCode = projCode.ProjectCode;
                 if (projCode.OnshoreHC.HasValue)
                 {
@@ -1462,16 +1462,14 @@ namespace DeliveryPortalDL
             List<IDPAttributeModel> idpAttributeModelList = new List<IDPAttributeModel>();
             
             var idList = new[] {idp, 9};
-            List<Tran_IDP_Attributes> attributeIdList = _context.Tran_IDP_Attributes.Where( c => idList.Contains(c.IDPId)).Distinct().ToList();
+            List<Tran_IDP_Attributes> attributeIdList = _context.Tran_IDP_Attributes.Where( c => idList.Contains(c.IDPId)).ToList();
            
             foreach (Tran_IDP_Attributes tranIDPAttribute in attributeIdList) 
             {
-               
-                    IDPAttributeModel idpmodel = _context.MST_Attributes.Where(c => c.AttributeId == tranIDPAttribute.AttributeId && c.AttributeEndDate >= date && c.AttributeStartDate <= date).Select(a => new IDPAttributeModel { AttributeId = a.AttributeId, AttributeName = a.AttributeName, AttributeTypeId = a.AttributeTypeId, AttributeTypeName = a.MST_AttributeTypes.AttributeTypeName }).FirstOrDefault();
-                    idpAttributeModelList.Add(idpmodel);
-               
+                IDPAttributeModel idpmodel = _context.MST_Attributes.Where(c => c.AttributeId == tranIDPAttribute.AttributeId && c.AttributeEndDate >= date && c.AttributeStartDate <= date).Select(a => new IDPAttributeModel { AttributeId = a.AttributeId, AttributeName = a.AttributeName, AttributeTypeId = a.AttributeTypeId, AttributeTypeName = a.MST_AttributeTypes.AttributeTypeName }).FirstOrDefault();
+                idpAttributeModelList.Add(idpmodel);
             }
-            return idpAttributeModelList.ToList();
+            return idpAttributeModelList;
         }
 
         public List<AttributeValuesModel> GetIDPSpecificAttributeValues(int idp) 
@@ -1519,7 +1517,7 @@ namespace DeliveryPortalDL
         public int InsertProjDetail(ProjectTempModel projectModel)
         {
             int newProjectId = -1;
-            MST_Project project = new MST_Project();
+            MST_Project_Temp project = new MST_Project_Temp();
             project.IDPId = projectModel.IDPId;
             project.AccountId = projectModel.AccountId;
             project.ProjectName = projectModel.ProjectName;
@@ -1534,7 +1532,7 @@ namespace DeliveryPortalDL
             project.LastUpdateDate = projectModel.LastUpdateDate;
             project.LastUpdatedBy = projectModel.LastUpdatedBy;
 
-            _context.MST_Project.Add(project);
+            _context.MST_Project_Temp.Add(project);
             _context.SaveChanges();
 
             newProjectId = project.ProjectId;
@@ -1543,8 +1541,8 @@ namespace DeliveryPortalDL
 
         public void UpdateProjDetail(ProjectTempModel projectModel)
         {
-            
-            MST_Project project = new MST_Project();
+
+            MST_Project_Temp project = new MST_Project_Temp();
             project.IDPId = projectModel.IDPId;
             project.AccountId = projectModel.AccountId;
             project.ProjectName = projectModel.ProjectName;
@@ -1720,23 +1718,29 @@ namespace DeliveryPortalDL
             }
 
         }
-        //public void InsertProjectCodes(string projectCodes, string projId) 
-        //{
-        //    string[] values = projectCodes.Split(',');
-        //    MST_ProjectCodes ProjCode;
-        //    for (int i = 0; i < values.Length; i++)
-        //    {
-        //        values[i] = values[1].Trim();
-        //    }
-        //    foreach (var val in values) 
-        //    {
-        //        ProjCode = new MST_ProjectCodes();
-        //        ProjCode.ProjectCode = val;
-                
-        //    }
+        public void MapProjectCodes(List<int> projectCodeList, string projId)
+        {
+            
+            Tran_Proj_ProjCode_Details tranProjectCode;
 
-        //}
-        
+            foreach (int projCode in projectCodeList)
+            {
+                tranProjectCode = new Tran_Proj_ProjCode_Details();
+                tranProjectCode.ProjectCodeId = projCode;
+                tranProjectCode.ProjectId = Convert.ToInt32(projId);
+                _context.Tran_Proj_ProjCode_Details.Add(tranProjectCode);
+                _context.SaveChanges();
+            }
 
+        }
+
+        public List<ProjectCodesModel> GetProjectCodes() 
+        {
+            List<ProjectCodesModel> lstProCodeModel= new List<ProjectCodesModel>();
+            
+            lstProCodeModel = _context.MST_ProjectCodes.Select(a => new ProjectCodesModel { ProjectCodeId = a.ProjectCodeId, ProjectCode = a.ProjectCode }).ToList<ProjectCodesModel>();
+
+            return lstProCodeModel;
+        }
     }
 }

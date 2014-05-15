@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MST_Account">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -44,6 +44,16 @@
           <Property Name="AttributeValue" Type="nvarchar" MaxLength="50" />
           <Property Name="AttributeText" Type="nvarchar" MaxLength="255" />
           <Property Name="AttributeValueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MST_Compliance">
+          <Key>
+            <PropertyRef Name="ComplianceId" />
+          </Key>
+          <Property Name="ComplianceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="TextValue" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MST_Employee">
           <Key>
@@ -188,10 +198,9 @@
             <PropertyRef Name="ProjectCodeId" />
           </Key>
           <Property Name="ProjectCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AccountId" Type="int" Nullable="false" />
           <Property Name="ProjectCode" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
-          <Property Name="LastUpdateDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="smalldatetime" />
           <Property Name="OnshoreHC" Type="int" />
           <Property Name="OffShoreHC" Type="int" />
         </EntityType>
@@ -241,6 +250,14 @@
           <Property Name="LastUpdateBy" Type="int" />
           <Property Name="LastUpdatedDate" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="Tran_Compliance_DrpValues">
+          <Key>
+            <PropertyRef Name="DrpValueId" />
+          </Key>
+          <Property Name="DrpValueId" Type="int" Nullable="false" />
+          <Property Name="ComplianceId" Type="int" Nullable="false" />
+          <Property Name="DrpValues" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tran_DE_Calendar">
           <Key>
             <PropertyRef Name="DEReviewCalendarId" />
@@ -266,6 +283,16 @@
           <Property Name="IDPAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDPId" Type="int" Nullable="false" />
           <Property Name="AttributeId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dashboard.dbo.Tran_IDP_Compliance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tran_IDP_Compliance">
+          <Key>
+            <PropertyRef Name="ComplianceId" />
+            <PropertyRef Name="IDPId" />
+          </Key>
+          <Property Name="ComplianceId" Type="int" Nullable="false" />
+          <Property Name="IDPId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tran_Proj_DE_Attibute">
           <Key>
@@ -628,18 +655,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectCodes_Account_AccountId">
-          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
-          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MST_Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="MST_ProjectCodes">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProjectIDPAttributes_Attributes_AttributeId">
           <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="1" />
           <End Role="Tran_Proj_IDP_Attributes" Type="Self.Tran_Proj_IDP_Attributes" Multiplicity="*" />
@@ -664,18 +679,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectProjectCodes_Project_ProjectId">
-          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
-          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MST_Project">
-              <PropertyRef Name="ProjectId" />
-            </Principal>
-            <Dependent Role="Tran_Proj_ProjCode_Details">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
           <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="1" />
           <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
@@ -685,6 +688,18 @@
             </Principal>
             <Dependent Role="Tran_Proj_ProjCode_Details">
               <PropertyRef Name="ProjectCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Compliance_DrpValues_MST_Compliance">
+          <End Role="MST_Compliance" Type="Self.MST_Compliance" Multiplicity="1" />
+          <End Role="Tran_Compliance_DrpValues" Type="Self.Tran_Compliance_DrpValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Compliance">
+              <PropertyRef Name="ComplianceId" />
+            </Principal>
+            <Dependent Role="Tran_Compliance_DrpValues">
+              <PropertyRef Name="ComplianceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -844,6 +859,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tran_Proj_ProjCode_Details_MST_Project_Temp">
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project_Temp">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
           <End Role="MST_Flags" Type="Self.MST_Flags" Multiplicity="0..1" />
           <End Role="Tran_Proj_Wkly_Attributes_Status" Type="Self.Tran_Proj_Wkly_Attributes_Status" Multiplicity="*" />
@@ -971,6 +998,7 @@
           <EntitySet Name="MST_Attributes" EntityType="Self.MST_Attributes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_AttributeTypes" EntityType="Self.MST_AttributeTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_AttributeValues" EntityType="Self.MST_AttributeValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MST_Compliance" EntityType="Self.MST_Compliance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_Employee" EntityType="Self.MST_Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_EstBasis" EntityType="Self.MST_EstBasis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_Flags" EntityType="Self.MST_Flags" Schema="dbo" store:Type="Tables" />
@@ -988,6 +1016,7 @@
           <EntitySet Name="MST_ReviewStatus" EntityType="Self.MST_ReviewStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_ReviewType" EntityType="Self.MST_ReviewType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_Sector" EntityType="Self.MST_Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_Compliance_DrpValues" EntityType="Self.Tran_Compliance_DrpValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tran_DE_Calendar" EntityType="Self.Tran_DE_Calendar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tran_EmailConfiguration" EntityType="Self.Tran_EmailConfiguration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tran_IDP_Attributes" EntityType="Self.Tran_IDP_Attributes" Schema="dbo" store:Type="Tables" />
@@ -998,6 +1027,12 @@
           <EntitySet Name="Tran_Proj_Wkly_Attributes_Status" EntityType="Self.Tran_Proj_Wkly_Attributes_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tran_Proj_Wkly_Status" EntityType="Self.Tran_Proj_Wkly_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tran_Project_IDP_Attributes" EntityType="Self.Tran_Project_IDP_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran_IDP_Compliance" EntityType="Self.Tran_IDP_Compliance" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Tran_IDP_Compliance].[ComplianceId] AS [ComplianceId], 
+[Tran_IDP_Compliance].[IDPId] AS [IDPId]
+FROM [dbo].[Tran_IDP_Compliance] AS [Tran_IDP_Compliance]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_MST_Account_MST_Geo" Association="Self.FK_MST_Account_MST_Geo">
             <End Role="MST_Geo" EntitySet="MST_Geo" />
             <End Role="MST_Account" EntitySet="MST_Account" />
@@ -1090,10 +1125,6 @@
             <End Role="MST_IDP" EntitySet="MST_IDP" />
             <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectCodes_Account_AccountId" Association="Self.FK_ProjectCodes_Account_AccountId">
-            <End Role="MST_Account" EntitySet="MST_Account" />
-            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProjectIDPAttributes_Attributes_AttributeId" Association="Self.FK_ProjectIDPAttributes_Attributes_AttributeId">
             <End Role="MST_Attributes" EntitySet="MST_Attributes" />
             <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
@@ -1102,13 +1133,13 @@
             <End Role="MST_Project" EntitySet="MST_Project" />
             <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectProjectCodes_Project_ProjectId" Association="Self.FK_ProjectProjectCodes_Project_ProjectId">
-            <End Role="MST_Project" EntitySet="MST_Project" />
-            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" Association="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId">
             <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
             <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Compliance_DrpValues_MST_Compliance" Association="Self.FK_Tran_Compliance_DrpValues_MST_Compliance">
+            <End Role="MST_Compliance" EntitySet="MST_Compliance" />
+            <End Role="Tran_Compliance_DrpValues" EntitySet="Tran_Compliance_DrpValues" />
           </AssociationSet>
           <AssociationSet Name="FK_Tran_DE_Calendar_MST_Employee" Association="Self.FK_Tran_DE_Calendar_MST_Employee">
             <End Role="MST_Employee" EntitySet="MST_Employee" />
@@ -1162,6 +1193,10 @@
             <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
             <End Role="Tran_Proj_DE_Review" EntitySet="Tran_Proj_DE_Review" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_ProjCode_Details_MST_Project_Temp" Association="Self.FK_Tran_Proj_ProjCode_Details_MST_Project_Temp">
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags" Association="Self.FK_Tran_Proj_Wkly_Attributes_Status_MST_Flags">
             <End Role="MST_Flags" EntitySet="MST_Flags" />
             <End Role="Tran_Proj_Wkly_Attributes_Status" EntitySet="Tran_Proj_Wkly_Attributes_Status" />
@@ -1187,7 +1222,8 @@
             <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1217,7 +1253,6 @@
           <NavigationProperty Name="MST_Sector1" Relationship="Self.FK_MST_Account_MST_Sector1" FromRole="MST_Account" ToRole="MST_Sector" />
           <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Account" FromRole="MST_Account" ToRole="MST_Project" />
           <NavigationProperty Name="MST_Project_Temp" Relationship="Self.FK_Project_Account_AccountId" FromRole="MST_Account" ToRole="MST_Project_Temp" />
-          <NavigationProperty Name="MST_ProjectCodes" Relationship="Self.FK_ProjectCodes_Account_AccountId" FromRole="MST_Account" ToRole="MST_ProjectCodes" />
         </EntityType>
         <EntityType Name="MST_Attributes">
           <Key>
@@ -1249,6 +1284,17 @@
           <Property Name="AttributeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AttributeText" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="AttributeValueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MST_Compliance">
+          <Key>
+            <PropertyRef Name="ComplianceId" />
+          </Key>
+          <Property Name="ComplianceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="TextValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tran_Compliance_DrpValues" Relationship="Self.FK_Tran_Compliance_DrpValues_MST_Compliance" FromRole="MST_Compliance" ToRole="Tran_Compliance_DrpValues" />
         </EntityType>
         <EntityType Name="MST_Employee">
           <Key>
@@ -1384,7 +1430,6 @@
           <NavigationProperty Name="MST_NoW" Relationship="Self.FK_MST_Project_MST_NoW" FromRole="MST_Project" ToRole="MST_NoW" />
           <NavigationProperty Name="MST_Sector" Relationship="Self.FK_MST_Project_MST_Sector" FromRole="MST_Project" ToRole="MST_Sector" />
           <NavigationProperty Name="Tran_Proj_IDP_Attributes" Relationship="Self.FK_ProjectIDPAttributes_Project_ProjectId" FromRole="MST_Project" ToRole="Tran_Proj_IDP_Attributes" />
-          <NavigationProperty Name="Tran_Proj_ProjCode_Details" Relationship="Self.FK_ProjectProjectCodes_Project_ProjectId" FromRole="MST_Project" ToRole="Tran_Proj_ProjCode_Details" />
           <NavigationProperty Name="Tran_DE_Calendar" Relationship="Self.FK_Tran_DE_Calendar_MST_Project" FromRole="MST_Project" ToRole="Tran_DE_Calendar" />
           <NavigationProperty Name="Tran_Proj_DE_Review" Relationship="Self.FK_Tran_Proj_DE_Review_MST_Project" FromRole="MST_Project" ToRole="Tran_Proj_DE_Review" />
           <NavigationProperty Name="Tran_Proj_Wkly_Status" Relationship="Self.FK_Tran_Proj_Wkly_Status_MST_Project" FromRole="MST_Project" ToRole="Tran_Proj_Wkly_Status" />
@@ -1412,6 +1457,7 @@
           <NavigationProperty Name="MST_Employee" Relationship="Self.FK_Project_Employee_EmployeeId" FromRole="MST_Project_Temp" ToRole="MST_Employee" />
           <NavigationProperty Name="MST_Employee1" Relationship="Self.FK_Project_Employee_PM_EmployeeId" FromRole="MST_Project_Temp" ToRole="MST_Employee" />
           <NavigationProperty Name="MST_IDP" Relationship="Self.FK_Project_IDP_IDPId" FromRole="MST_Project_Temp" ToRole="MST_IDP" />
+          <NavigationProperty Name="Tran_Proj_ProjCode_Details" Relationship="Self.FK_Tran_Proj_ProjCode_Details_MST_Project_Temp" FromRole="MST_Project_Temp" ToRole="Tran_Proj_ProjCode_Details" />
         </EntityType>
         <EntityType Name="MST_ProjectAttributes">
           <Key>
@@ -1438,13 +1484,11 @@
             <PropertyRef Name="ProjectCodeId" />
           </Key>
           <Property Name="ProjectCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AccountId" Type="Int32" Nullable="false" />
           <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="0" />
           <Property Name="OnshoreHC" Type="Int32" />
           <Property Name="OffShoreHC" Type="Int32" />
-          <NavigationProperty Name="MST_Account" Relationship="Self.FK_ProjectCodes_Account_AccountId" FromRole="MST_ProjectCodes" ToRole="MST_Account" />
           <NavigationProperty Name="Tran_Proj_ProjCode_Details" Relationship="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" FromRole="MST_ProjectCodes" ToRole="Tran_Proj_ProjCode_Details" />
         </EntityType>
         <EntityType Name="MST_Questionnaire">
@@ -1503,6 +1547,15 @@
           <NavigationProperty Name="MST_Account" Relationship="Self.FK_MST_Account_MST_Sector" FromRole="MST_Sector" ToRole="MST_Account" />
           <NavigationProperty Name="MST_Account1" Relationship="Self.FK_MST_Account_MST_Sector1" FromRole="MST_Sector" ToRole="MST_Account" />
           <NavigationProperty Name="MST_Project" Relationship="Self.FK_MST_Project_MST_Sector" FromRole="MST_Sector" ToRole="MST_Project" />
+        </EntityType>
+        <EntityType Name="Tran_Compliance_DrpValues">
+          <Key>
+            <PropertyRef Name="DrpValueId" />
+          </Key>
+          <Property Name="DrpValueId" Type="Int32" Nullable="false" />
+          <Property Name="ComplianceId" Type="Int32" Nullable="false" />
+          <Property Name="DrpValues" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MST_Compliance" Relationship="Self.FK_Tran_Compliance_DrpValues_MST_Compliance" FromRole="Tran_Compliance_DrpValues" ToRole="MST_Compliance" />
         </EntityType>
         <EntityType Name="Tran_DE_Calendar">
           <Key>
@@ -1594,7 +1647,7 @@
           <Property Name="ProjectTranId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="ProjectCodeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MST_Project" Relationship="Self.FK_ProjectProjectCodes_Project_ProjectId" FromRole="Tran_Proj_ProjCode_Details" ToRole="MST_Project" />
+          <NavigationProperty Name="MST_Project_Temp" Relationship="Self.FK_Tran_Proj_ProjCode_Details_MST_Project_Temp" FromRole="Tran_Proj_ProjCode_Details" ToRole="MST_Project_Temp" />
           <NavigationProperty Name="MST_ProjectCodes" Relationship="Self.FK_ProjectProjectCodes_ProjectCodes_ProjectCodeId" FromRole="Tran_Proj_ProjCode_Details" ToRole="MST_ProjectCodes" />
         </EntityType>
         <EntityType Name="Tran_Proj_Wkly_Attributes_Status">
@@ -1640,6 +1693,14 @@
             <PropertyRef Name="ProjectIDPAttributeId" />
           </Key>
           <Property Name="ProjectIDPAttributeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran_IDP_Compliance">
+          <Key>
+            <PropertyRef Name="ComplianceId" />
+            <PropertyRef Name="IDPId" />
+          </Key>
+          <Property Name="ComplianceId" Type="Int32" Nullable="false" />
+          <Property Name="IDPId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_MST_Account_MST_Geo">
           <End Role="MST_Geo" Type="Self.MST_Geo" Multiplicity="0..1" />
@@ -1701,18 +1762,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectCodes_Account_AccountId">
-          <End Role="MST_Account" Type="Self.MST_Account" Multiplicity="1" />
-          <End Role="MST_ProjectCodes" Type="Self.MST_ProjectCodes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MST_Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="MST_ProjectCodes">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MST_Attributes_MST_AttributeTypes">
           <End Role="MST_AttributeTypes" Type="Self.MST_AttributeTypes" Multiplicity="1" />
           <End Role="MST_Attributes" Type="Self.MST_Attributes" Multiplicity="*" />
@@ -1746,6 +1795,18 @@
             </Principal>
             <Dependent Role="Tran_IDP_Attributes">
               <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Compliance_DrpValues_MST_Compliance">
+          <End Role="MST_Compliance" Type="Self.MST_Compliance" Multiplicity="1" />
+          <End Role="Tran_Compliance_DrpValues" Type="Self.Tran_Compliance_DrpValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Compliance">
+              <PropertyRef Name="ComplianceId" />
+            </Principal>
+            <Dependent Role="Tran_Compliance_DrpValues">
+              <PropertyRef Name="ComplianceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2013,18 +2074,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectProjectCodes_Project_ProjectId">
-          <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
-          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MST_Project">
-              <PropertyRef Name="ProjectId" />
-            </Principal>
-            <Dependent Role="Tran_Proj_ProjCode_Details">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tran_DE_Calendar_MST_Project">
           <End Role="MST_Project" Type="Self.MST_Project" Multiplicity="1" />
           <End Role="Tran_DE_Calendar" Type="Self.Tran_DE_Calendar" Multiplicity="*" />
@@ -2057,6 +2106,18 @@
               <PropertyRef Name="ProjectId" />
             </Principal>
             <Dependent Role="Tran_Proj_Wkly_Status">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tran_Proj_ProjCode_Details_MST_Project_Temp">
+          <End Role="MST_Project_Temp" Type="Self.MST_Project_Temp" Multiplicity="1" />
+          <End Role="Tran_Proj_ProjCode_Details" Type="Self.Tran_Proj_ProjCode_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MST_Project_Temp">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Tran_Proj_ProjCode_Details">
               <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2210,6 +2271,7 @@
           <EntitySet Name="MST_Attributes" EntityType="Self.MST_Attributes" />
           <EntitySet Name="MST_AttributeTypes" EntityType="Self.MST_AttributeTypes" />
           <EntitySet Name="MST_AttributeValues" EntityType="Self.MST_AttributeValues" />
+          <EntitySet Name="MST_Compliance" EntityType="Self.MST_Compliance" />
           <EntitySet Name="MST_Employee" EntityType="Self.MST_Employee" />
           <EntitySet Name="MST_EstBasis" EntityType="Self.MST_EstBasis" />
           <EntitySet Name="MST_Flags" EntityType="Self.MST_Flags" />
@@ -2227,6 +2289,7 @@
           <EntitySet Name="MST_ReviewStatus" EntityType="Self.MST_ReviewStatus" />
           <EntitySet Name="MST_ReviewType" EntityType="Self.MST_ReviewType" />
           <EntitySet Name="MST_Sector" EntityType="Self.MST_Sector" />
+          <EntitySet Name="Tran_Compliance_DrpValues" EntityType="Self.Tran_Compliance_DrpValues" />
           <EntitySet Name="Tran_DE_Calendar" EntityType="Self.Tran_DE_Calendar" />
           <EntitySet Name="Tran_EmailConfiguration" EntityType="Self.Tran_EmailConfiguration" />
           <EntitySet Name="Tran_IDP_Attributes" EntityType="Self.Tran_IDP_Attributes" />
@@ -2237,6 +2300,7 @@
           <EntitySet Name="Tran_Proj_Wkly_Attributes_Status" EntityType="Self.Tran_Proj_Wkly_Attributes_Status" />
           <EntitySet Name="Tran_Proj_Wkly_Status" EntityType="Self.Tran_Proj_Wkly_Status" />
           <EntitySet Name="Tran_Project_IDP_Attributes" EntityType="Self.Tran_Project_IDP_Attributes" />
+          <EntitySet Name="Tran_IDP_Compliance" EntityType="Self.Tran_IDP_Compliance" />
           <AssociationSet Name="FK_MST_Account_MST_Geo" Association="Self.FK_MST_Account_MST_Geo">
             <End Role="MST_Geo" EntitySet="MST_Geo" />
             <End Role="MST_Account" EntitySet="MST_Account" />
@@ -2257,10 +2321,6 @@
             <End Role="MST_Account" EntitySet="MST_Account" />
             <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectCodes_Account_AccountId" Association="Self.FK_ProjectCodes_Account_AccountId">
-            <End Role="MST_Account" EntitySet="MST_Account" />
-            <End Role="MST_ProjectCodes" EntitySet="MST_ProjectCodes" />
-          </AssociationSet>
           <AssociationSet Name="FK_MST_Attributes_MST_AttributeTypes" Association="Self.FK_MST_Attributes_MST_AttributeTypes">
             <End Role="MST_AttributeTypes" EntitySet="MST_AttributeTypes" />
             <End Role="MST_Attributes" EntitySet="MST_Attributes" />
@@ -2272,6 +2332,10 @@
           <AssociationSet Name="FK_Tran_IDP_Attributes_MST_Attributes" Association="Self.FK_Tran_IDP_Attributes_MST_Attributes">
             <End Role="MST_Attributes" EntitySet="MST_Attributes" />
             <End Role="Tran_IDP_Attributes" EntitySet="Tran_IDP_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Compliance_DrpValues_MST_Compliance" Association="Self.FK_Tran_Compliance_DrpValues_MST_Compliance">
+            <End Role="MST_Compliance" EntitySet="MST_Compliance" />
+            <End Role="Tran_Compliance_DrpValues" EntitySet="Tran_Compliance_DrpValues" />
           </AssociationSet>
           <AssociationSet Name="FK_MST_Employee_MST_IDP" Association="Self.FK_MST_Employee_MST_IDP">
             <End Role="MST_IDP" EntitySet="MST_IDP" />
@@ -2361,10 +2425,6 @@
             <End Role="MST_Project" EntitySet="MST_Project" />
             <End Role="Tran_Proj_IDP_Attributes" EntitySet="Tran_Proj_IDP_Attributes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectProjectCodes_Project_ProjectId" Association="Self.FK_ProjectProjectCodes_Project_ProjectId">
-            <End Role="MST_Project" EntitySet="MST_Project" />
-            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tran_DE_Calendar_MST_Project" Association="Self.FK_Tran_DE_Calendar_MST_Project">
             <End Role="MST_Project" EntitySet="MST_Project" />
             <End Role="Tran_DE_Calendar" EntitySet="Tran_DE_Calendar" />
@@ -2376,6 +2436,10 @@
           <AssociationSet Name="FK_Tran_Proj_Wkly_Status_MST_Project" Association="Self.FK_Tran_Proj_Wkly_Status_MST_Project">
             <End Role="MST_Project" EntitySet="MST_Project" />
             <End Role="Tran_Proj_Wkly_Status" EntitySet="Tran_Proj_Wkly_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tran_Proj_ProjCode_Details_MST_Project_Temp" Association="Self.FK_Tran_Proj_ProjCode_Details_MST_Project_Temp">
+            <End Role="MST_Project_Temp" EntitySet="MST_Project_Temp" />
+            <End Role="Tran_Proj_ProjCode_Details" EntitySet="Tran_Proj_ProjCode_Details" />
           </AssociationSet>
           <AssociationSet Name="FK_MST_ProjectAttributes_MST_ProjectAttributes" Association="Self.FK_MST_ProjectAttributes_MST_ProjectAttributes">
             <End Role="MST_ProjectAttributes" EntitySet="MST_ProjectAttributes" />
@@ -2451,7 +2515,7 @@
             <Parameter Name="IsStrategic" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="RetrieveProjectDetailsByProID">
-          <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Tran_Proj_Wkly_Status_SelectAll" ReturnType="Collection(DashboardModel.Tran_Proj_Wkly_Status_SelectAll_Result)">
             <Parameter Name="ProID" Mode="In" Type="Int32" />
@@ -2612,6 +2676,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MST_Compliance">
+            <EntityTypeMapping TypeName="DashboardModel.MST_Compliance">
+              <MappingFragment StoreEntitySet="MST_Compliance">
+                <ScalarProperty Name="ComplianceId" ColumnName="ComplianceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TextValue" ColumnName="TextValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MST_Employee">
             <EntityTypeMapping TypeName="DashboardModel.MST_Employee">
               <MappingFragment StoreEntitySet="MST_Employee">
@@ -2765,7 +2840,6 @@
             <EntityTypeMapping TypeName="DashboardModel.MST_ProjectCodes">
               <MappingFragment StoreEntitySet="MST_ProjectCodes">
                 <ScalarProperty Name="ProjectCodeId" ColumnName="ProjectCodeId" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
                 <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
@@ -2822,6 +2896,15 @@
                 <ScalarProperty Name="ParentSectorId" ColumnName="ParentSectorId" />
                 <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
                 <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_Compliance_DrpValues">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_Compliance_DrpValues">
+              <MappingFragment StoreEntitySet="Tran_Compliance_DrpValues">
+                <ScalarProperty Name="DrpValueId" ColumnName="DrpValueId" />
+                <ScalarProperty Name="ComplianceId" ColumnName="ComplianceId" />
+                <ScalarProperty Name="DrpValues" ColumnName="DrpValues" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2942,6 +3025,14 @@
             <EntityTypeMapping TypeName="DashboardModel.Tran_Project_IDP_Attributes">
               <MappingFragment StoreEntitySet="Tran_Project_IDP_Attributes">
                 <ScalarProperty Name="ProjectIDPAttributeId" ColumnName="ProjectIDPAttributeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tran_IDP_Compliance">
+            <EntityTypeMapping TypeName="DashboardModel.Tran_IDP_Compliance">
+              <MappingFragment StoreEntitySet="Tran_IDP_Compliance">
+                <ScalarProperty Name="ComplianceId" ColumnName="ComplianceId" />
+                <ScalarProperty Name="IDPId" ColumnName="IDPId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

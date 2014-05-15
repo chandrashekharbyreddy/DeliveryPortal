@@ -20,14 +20,12 @@ namespace DeliveryPortalDL
         }
     
         public int ProjectCodeId { get; set; }
-        public int AccountId { get; set; }
         public string ProjectCode { get; set; }
-        public int LastUpdatedBy { get; set; }
-        public System.DateTime LastUpdateDate { get; set; }
+        public Nullable<int> LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdateDate { get; set; }
         public Nullable<int> OnshoreHC { get; set; }
         public Nullable<int> OffShoreHC { get; set; }
     
-        public virtual MST_Account MST_Account { get; set; }
         public virtual ICollection<Tran_Proj_ProjCode_Details> Tran_Proj_ProjCode_Details { get; set; }
     }
 }

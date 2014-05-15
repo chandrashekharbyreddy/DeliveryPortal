@@ -31,7 +31,7 @@ namespace DeliveryPortal
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             ProjectCodesModel projectCode = new ProjectCodesModel();
-            projectCode.AccountId = Convert.ToInt32(ddlAccount.SelectedItem.Value);
+            //projectCode.AccountId = Convert.ToInt32(ddlAccount.SelectedItem.Value);
             projectCode.ProjectCode = txtProjectCode.Text.Trim();
             projectCode.OnshoreHC =Convert.ToInt32(txtOnShoreHC.Text.Trim());
             projectCode.OffShoreHC = Convert.ToInt32(txtOffShoreHC.Text.Trim());

@@ -32,6 +32,7 @@ namespace DeliveryPortalDL
         public DbSet<MST_Attributes> MST_Attributes { get; set; }
         public DbSet<MST_AttributeTypes> MST_AttributeTypes { get; set; }
         public DbSet<MST_AttributeValues> MST_AttributeValues { get; set; }
+        public DbSet<MST_Compliance> MST_Compliance { get; set; }
         public DbSet<MST_Employee> MST_Employee { get; set; }
         public DbSet<MST_EstBasis> MST_EstBasis { get; set; }
         public DbSet<MST_Flags> MST_Flags { get; set; }
@@ -49,6 +50,7 @@ namespace DeliveryPortalDL
         public DbSet<MST_ReviewStatus> MST_ReviewStatus { get; set; }
         public DbSet<MST_ReviewType> MST_ReviewType { get; set; }
         public DbSet<MST_Sector> MST_Sector { get; set; }
+        public DbSet<Tran_Compliance_DrpValues> Tran_Compliance_DrpValues { get; set; }
         public DbSet<Tran_DE_Calendar> Tran_DE_Calendar { get; set; }
         public DbSet<Tran_EmailConfiguration> Tran_EmailConfiguration { get; set; }
         public DbSet<Tran_IDP_Attributes> Tran_IDP_Attributes { get; set; }
@@ -59,6 +61,7 @@ namespace DeliveryPortalDL
         public DbSet<Tran_Proj_Wkly_Attributes_Status> Tran_Proj_Wkly_Attributes_Status { get; set; }
         public DbSet<Tran_Proj_Wkly_Status> Tran_Proj_Wkly_Status { get; set; }
         public DbSet<Tran_Project_IDP_Attributes> Tran_Project_IDP_Attributes { get; set; }
+        public DbSet<Tran_IDP_Compliance> Tran_IDP_Compliance { get; set; }
     
         [EdmFunction("DashboardEntities", "ufn_GetWeekList")]
         public virtual IQueryable<ufn_GetWeekList_Result> ufn_GetWeekList()

@@ -11,8 +11,8 @@ namespace DeliveryPortalEntities
         public int ProjectCodeId { get; set; }
         public int AccountId { get; set; }
         public string ProjectCode { get; set; }
-        public int LastUpdatedBy { get; set; }
-        public System.DateTime LastUpdateDate { get; set; }
+        public Nullable<int> LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdateDate { get; set; }
         public Nullable<int> OnshoreHC { get; set; }
         public Nullable<int> OffShoreHC { get; set; }
         public int ProjectId { get; set; }

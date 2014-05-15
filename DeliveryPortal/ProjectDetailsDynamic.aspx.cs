@@ -15,11 +15,12 @@ namespace DeliveryPortal
     {
         ProjectDL _projectDL = new ProjectDL();
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        bool ddlIDP_SelectedIndexChangedValue = false; 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                PopulateProjectCodes();
                 PopulateIDPs();
                 PopulateAccounts();
                 PopulateEMandPMIds();
@@ -64,6 +65,7 @@ namespace DeliveryPortal
         /// <param name="idpId"></param>
         private void GetProjectDetailsValues(int idpId)
         {
+
             //create the dynamic controls first
             CreateDynamicControls(idpId);
             // Get the dynamic fileds values
@@ -120,10 +122,8 @@ namespace DeliveryPortal
                                         
                                      }
                                  }
-
                             }                       
                     }
-
                 }
             }
         }
@@ -132,6 +132,10 @@ namespace DeliveryPortal
         private void PopulateProjectCodes() 
         {
             //Populate Project Codes
+            lbProjectCode.DataSource = _projectDL.GetProjectCodes();
+            lbProjectCode.DataTextField = "ProjectCode";
+            lbProjectCode.DataValueField = "ProjectCodeId";
+            lbProjectCode.DataBind();
         }
         private void PopulateAccounts()
         {
@@ -174,7 +178,6 @@ namespace DeliveryPortal
             dtAttributes.Columns.Add("AttributeTypeId", Type.GetType("System.Int32"));
             
             List<IDPAttributeModel> idpAtributesList = _projectDL.GetIDPSpecificAttributes(IDPId);
-            
             foreach (IDPAttributeModel idpAttribute in idpAtributesList)
             {
                 if (idpAttribute != null)
@@ -244,10 +247,9 @@ namespace DeliveryPortal
 
         protected void ddlIDP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int iSelectedId = Convert.ToInt32(ddlIDP.SelectedValue);
-            ddlIDP_SelectedIndexChangedValue = true;
+            int iSelectedId = Convert.ToInt32(ddlIDP.SelectedValue);            
             CreateDynamicControls(iSelectedId);
-           // tab_index.Value = "1";
+            
             
         }
         protected void CreateDynamicControls(int idpId)
@@ -259,11 +261,7 @@ namespace DeliveryPortal
             DataTable dtAttributeValues = GetDynamicAttributeValueList(idpId);
             //RequiredFieldValidator validator = new RequiredFieldValidator();
 
-            if (ddlIDP_SelectedIndexChangedValue == false)
-            {
-                dtAttributes.Rows.Clear();
-
-            }
+         
             foreach (DataRow dr in dtAttributes.Rows)
             {
                 Label lblId = new Label();
@@ -291,22 +289,19 @@ namespace DeliveryPortal
 
                     TableRow tableROW = new TableRow();
                     TableCell labelId = new TableCell();
-                    tableROW.Cells.Add(labelId);
+                    tableROW.Cells.Add(labelId);                    
                     labelId.Controls.Add(lblId);
 
                     TableCell labelCell = new TableCell();
-                    labelCell.Text = dr["AttributeName"].ToString() + " :";
+                    labelCell.Text = dr["AttributeName"].ToString();
                     labelCell.CssClass = "label";
-                    labelCell.ColumnSpan = 2;
                     tableROW.Cells.Add(labelCell);
 
                     TableCell dropdownListCell = new TableCell();
                     tableROW.Cells.Add(dropdownListCell);
-                    dropdownListCell.ColumnSpan = 2;
                     dropdownListCell.Controls.Add(dropDownList);                    
                     rfvValidator.ErrorMessage = "Please Fill " + dr["AttributeName"].ToString().Replace(" ", "");                    
                     tblRecipients.Rows.Add(tableROW);
-                   
                 }
                 //Create TextBox Control
                 if (int.Parse(dr["AttributeTypeId"].ToString()) == 4)
@@ -416,7 +411,16 @@ namespace DeliveryPortal
                 
 
                 //Collecting Project Code List
-                //proj.ProjectCodes = sb.ToString();
+                List<int> ListProjectCode = new List<int>();
+                foreach (ListItem item in lbProjectCode.Items)
+                {
+                    if (item.Selected)
+                    {
+                        ListProjectCode.Add(int.Parse(item.Value));
+                    }
+                }
+
+               
 
             //Collecting Data from dynamic fields            
             string AttributeId = "";
@@ -504,7 +508,7 @@ namespace DeliveryPortal
                 int newProjectId = _projectDL.InsertProjDetail(proj);
                 hidProjectId.Value = newProjectId.ToString();
 
-                //_projectDL.InsertProjectCodes(sb.ToString(), hidProjectId.Value.ToString());
+                _projectDL.MapProjectCodes(ListProjectCode, hidProjectId.Value.ToString());
 
                 _projectDL.InsertProjAttributes(prjIDPAttr, hidProjectId.Value.ToString());
                 lblMessage.Text = "Data Saved Successfully.";
@@ -540,14 +544,31 @@ namespace DeliveryPortal
             //    sb.Append(" ");
             //}
 
+            //foreach (ListItem item in lbProjectCode.Items)
+            //{
+            //    if (item.Selected)
+            //    {
+            //        sb.Append(item.Value);
+            //        sb.Append(",");
+            //    }
+            //}
+            List<int> intProject = new List<int>();
             foreach (ListItem item in lbProjectCode.Items)
             {
                 if (item.Selected)
                 {
-                    sb.Append(item.Value);
-                    sb.Append(",");
+                    intProject.Add(int.Parse(item.Value));
+                    //sb.Append(item.Value);
+                    //sb.Append(",");
+                    
                 }
             }
+            foreach (int i in intProject) 
+            {
+                Response.Write(i);
+                
+            }
+            
             //Response.Write(sb.ToString());
 
         }

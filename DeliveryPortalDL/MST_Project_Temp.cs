@@ -14,6 +14,11 @@ namespace DeliveryPortalDL
     
     public partial class MST_Project_Temp
     {
+        public MST_Project_Temp()
+        {
+            this.Tran_Proj_ProjCode_Details = new HashSet<Tran_Proj_ProjCode_Details>();
+        }
+    
         public int ProjectId { get; set; }
         public int AccountId { get; set; }
         public string ProjectName { get; set; }
@@ -34,5 +39,6 @@ namespace DeliveryPortalDL
         public virtual MST_Employee MST_Employee { get; set; }
         public virtual MST_Employee MST_Employee1 { get; set; }
         public virtual MST_IDP MST_IDP { get; set; }
+        public virtual ICollection<Tran_Proj_ProjCode_Details> Tran_Proj_ProjCode_Details { get; set; }
     }
 }

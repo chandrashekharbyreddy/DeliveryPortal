@@ -18,7 +18,6 @@ namespace DeliveryPortalDL
         {
             this.MST_Project = new HashSet<MST_Project>();
             this.MST_Project_Temp = new HashSet<MST_Project_Temp>();
-            this.MST_ProjectCodes = new HashSet<MST_ProjectCodes>();
         }
     
         public int AccountId { get; set; }
@@ -35,6 +34,5 @@ namespace DeliveryPortalDL
         public virtual MST_Sector MST_Sector1 { get; set; }
         public virtual ICollection<MST_Project> MST_Project { get; set; }
         public virtual ICollection<MST_Project_Temp> MST_Project_Temp { get; set; }
-        public virtual ICollection<MST_ProjectCodes> MST_ProjectCodes { get; set; }
     }
 }

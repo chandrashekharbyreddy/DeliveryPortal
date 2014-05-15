@@ -17,7 +17,6 @@ namespace DeliveryPortalDL
         public MST_Project()
         {
             this.Tran_Proj_IDP_Attributes = new HashSet<Tran_Proj_IDP_Attributes>();
-            this.Tran_Proj_ProjCode_Details = new HashSet<Tran_Proj_ProjCode_Details>();
             this.Tran_DE_Calendar = new HashSet<Tran_DE_Calendar>();
             this.Tran_Proj_DE_Review = new HashSet<Tran_Proj_DE_Review>();
             this.Tran_Proj_Wkly_Status = new HashSet<Tran_Proj_Wkly_Status>();
@@ -55,7 +54,6 @@ namespace DeliveryPortalDL
         public virtual MST_NoW MST_NoW { get; set; }
         public virtual MST_Sector MST_Sector { get; set; }
         public virtual ICollection<Tran_Proj_IDP_Attributes> Tran_Proj_IDP_Attributes { get; set; }
-        public virtual ICollection<Tran_Proj_ProjCode_Details> Tran_Proj_ProjCode_Details { get; set; }
         public virtual ICollection<Tran_DE_Calendar> Tran_DE_Calendar { get; set; }
         public virtual ICollection<Tran_Proj_DE_Review> Tran_Proj_DE_Review { get; set; }
         public virtual ICollection<Tran_Proj_Wkly_Status> Tran_Proj_Wkly_Status { get; set; }

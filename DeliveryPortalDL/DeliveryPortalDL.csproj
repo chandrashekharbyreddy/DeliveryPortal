@@ -90,6 +90,9 @@
     <Compile Include="MST_AttributeValues.cs">
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="MST_Compliance.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="MST_Employee.cs">
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
@@ -148,6 +151,9 @@
     <Compile Include="RetrieveProjectDetails_Result.cs">
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Tran_Compliance_DrpValues.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tran_DE_Calendar.cs">
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
@@ -155,6 +161,9 @@
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tran_IDP_Attributes.cs">
+      <DependentUpon>DPEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tran_IDP_Compliance.cs">
       <DependentUpon>DPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tran_Project_IDP_Attributes.cs">
