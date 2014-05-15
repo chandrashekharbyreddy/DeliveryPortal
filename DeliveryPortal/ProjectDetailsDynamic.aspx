@@ -42,8 +42,7 @@
   <ul>
     <li><a href="#fragment-1"><span style ="font-weight:bold">Project Code</span></a></li>
     <li><a href="#fragment-2"><span style ="font-weight:bold">Dynamic Attributes</span></a></li>
-    <li><a href="#fragment-3"><span style ="font-weight:bold">Waiting...</span></a></li>
-    <li><a href="#fragment-4"><span style ="font-weight:bold">Compliance Attributes</span></a></li>
+    <li><a href="#fragment-3"><span style ="font-weight:bold">Compliance Attributes</span></a></li>
   </ul>
   <div id="fragment-1">
       <table style="width: 100%;">
@@ -62,80 +61,78 @@
           
 
       </table>
-      
+       <table style="width: 100%;">
+          <tr>
+              
+              <td  align="center" >
+                  <button id="btnPrjDetails" title="Next >>"   style="width:100px;height:30px;background-color: #74B2C7; color: #FFFFFF;font-family:Segoe UI, Verdana, Helvetica, Sans-Serif;font-size:.85em;border:1px solid black"  >Next >></button>
+              </td>
+
+          </tr>
+      </table>
       
   </div>
   <div id="fragment-2">
-   
-  </div>
-  <div id="fragment-3">
-  
-  </div>
-
-  <div id="fragment-4">
-  
-  </div>
-</div>
- 
-
-
-
-    <div>
-     <table style="width: 100%;">
+      <table style="width: 100%;">
           <tr>
-            <td colspan="4" align="center"><b>Project Details</b></td>
-            
-        </tr>
-        <tr align="center">
-            <td colspan="4" align="center">
-                <asp:Label ID="lblMessage" runat="server" CssClass="error"></asp:Label><input type="hidden" id="Hidden1" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <asp:ValidationSummary ID="valSummary" runat="server" DisplayMode="BulletList" ShowSummary="true" />
-            </td>
-        </tr>
-         <tr><td class="label"><span class="error">*</span>IDP:</td>
-            <td>
-                <asp:DropDownList ID="ddlIDP" runat="server" OnSelectedIndexChanged="ddlIDP_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvIDP" runat="server" ErrorMessage="Please select IDP" ControlToValidate="ddlIDP" Display="None"></asp:RequiredFieldValidator>
-            </td></tr><tr>
-             <td class="label"><span class="error">*</span>Account : </td>
-            <td>
-                <asp:DropDownList ID="ddlAccount" runat="server"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="redAccount" runat="server" Display="None" ControlToValidate="ddlAccount" InitialValue="" ErrorMessage="Please select Account"></asp:RequiredFieldValidator>
-            </td>
-         </tr>
-         <tr>
+              <td colspan="4" align="center"><b>Project Details</b></td>
+
+          </tr>
+          <tr align="center">
+              <td colspan="4" align="center">
+                  <asp:Label ID="lblMessage" runat="server" CssClass="error"></asp:Label><input type="hidden" id="Hidden1" runat="server" />
+              </td>
+          </tr>
+          <tr>
+              <td colspan="4">
+                  <asp:ValidationSummary ID="valSummary" runat="server" DisplayMode="BulletList" ShowSummary="true" />
+              </td>
+          </tr>
+          <tr>
+              <td class="label"><span class="error">*</span>IDP:</td>
+              <td>
+                  <asp:DropDownList ID="ddlIDP" runat="server" OnSelectedIndexChanged="ddlIDP_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvIDP" runat="server" ErrorMessage="Please select IDP" ControlToValidate="ddlIDP" Display="None"></asp:RequiredFieldValidator>
+              </td>
+          </tr>
+          <tr>
+              <td class="label"><span class="error">*</span>Account : </td>
+              <td>
+                  <asp:DropDownList ID="ddlAccount" runat="server"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="redAccount" runat="server" Display="None" ControlToValidate="ddlAccount" InitialValue="" ErrorMessage="Please select Account"></asp:RequiredFieldValidator>
+              </td>
+          </tr>
+          <tr>
               <td class="label"><span class="error">*</span>Project Logical Name : </td>
-            <td>
-                <asp:TextBox ID="textProjectName" runat="server"></asp:TextBox><input type="hidden" id="hidProjectId" runat="server" />
-                <asp:RequiredFieldValidator ID="rfvProjectName" runat="server" Display="None" ControlToValidate="textProjectName" ErrorMessage="Please Fill Project Logical Name"></asp:RequiredFieldValidator>
-            </td></tr>
-         <tr>
-             <td class="label"><span class="error">*</span>Engagement Manager:</td>
-            <td>
-                <asp:DropDownList ID="ddlEM" runat="server"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvEM" runat="server" ErrorMessage="Please select Engagement Manager" ControlToValidate="ddlEM" Display="None"></asp:RequiredFieldValidator>
-            </td>
+              <td>
+                  <asp:TextBox ID="textProjectName" runat="server"></asp:TextBox><input type="hidden" id="hidProjectId" runat="server" />
+                  <asp:RequiredFieldValidator ID="rfvProjectName" runat="server" Display="None" ControlToValidate="textProjectName" ErrorMessage="Please Fill Project Logical Name"></asp:RequiredFieldValidator>
+              </td>
+          </tr>
+          <tr>
+              <td class="label"><span class="error">*</span>Engagement Manager:</td>
+              <td>
+                  <asp:DropDownList ID="ddlEM" runat="server"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvEM" runat="server" ErrorMessage="Please select Engagement Manager" ControlToValidate="ddlEM" Display="None"></asp:RequiredFieldValidator>
+              </td>
 
-         </tr>
-         <tr><td class="label"><span class="error">*</span>Project Manager:</td>
-            <td>
-                <asp:DropDownList ID="ddlPM" runat="server"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvPM" runat="server" ErrorMessage="Please select Project Manager" ControlToValidate="ddlPM" Display="None"></asp:RequiredFieldValidator>
-            </td></tr>
-               <tr>
-             <td class="label">Is Strategic : </td>
-            <td>
-                <asp:CheckBox ID="chkIsStrategic" runat="server" /></td>
-         </tr>
+          </tr>
+          <tr>
+              <td class="label"><span class="error">*</span>Project Manager:</td>
+              <td>
+                  <asp:DropDownList ID="ddlPM" runat="server"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="rfvPM" runat="server" ErrorMessage="Please select Project Manager" ControlToValidate="ddlPM" Display="None"></asp:RequiredFieldValidator>
+              </td>
+          </tr>
+          <tr>
+              <td class="label">Is Strategic : </td>
+              <td>
+                  <asp:CheckBox ID="chkIsStrategic" runat="server" /></td>
+          </tr>
 
-     </table>
-    </div>
-    <div>
-        <asp:Table ID="tblRecipients" runat="server" HorizontalAlign="Center" >
+      </table>
+      
+        <asp:Table ID="tblRecipients" runat="server"  Width="100%">
            <%-- <asp:TableRow>
                 <asp:TableCell><b>Project Details</b></asp:TableCell>
             </asp:TableRow>
@@ -176,16 +173,69 @@
                 <asp:TableCell CssClass="label">Is Strategic : </asp:TableCell><asp:TableCell>
                     <asp:CheckBox ID="chkIsStrategic" runat="server" /></asp:TableCell></asp:TableRow>--%>
         </asp:Table>
-    </div>
+
+      <table style="width: 100%;">
+          <tr>
+               <td  align="right" >
+                  <button id="btnNProjectcodes"   style="width:100px;height:30px;background-color: #74B2C7; color: #FFFFFF;font-family:Segoe UI, Verdana, Helvetica, Sans-Serif;font-size:.85em;border:1px solid black"    ><< Previous</button>
+              </td>
+              <td  align="left" >
+                  <button id="btnDetails" title="Next >>"   style="width:100px;height:30px;background-color: #74B2C7; color: #FFFFFF;font-family:Segoe UI, Verdana, Helvetica, Sans-Serif;font-size:.85em;border:1px solid black"    >Next >></button>
+              </td>
+
+          </tr>
+      </table>
+
+   
+  </div>
+  <div id="fragment-3">
+   <table style="width: 100%;">
+          <tr>
+              <td  align="center" >
+                  <button id="btncompliance" title=""   style="width:100px;height:30px;background-color: #74B2C7; color: #FFFFFF;font-family:Segoe UI, Verdana, Helvetica, Sans-Serif;font-size:.85em;border:1px solid black"    ><< Previous </button>
+              </td>
+
+          </tr>
+      </table>
+
+  </div>
+         
+</div>
+ 
+   
     <div>
         <table style="width: 100%;">
             <tr>
                 <td class="label"><asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click"/></td>
                 <td><asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" /></td></tr></table></div>
     <div><asp:Label ID="lblValues" runat="server"></asp:Label></div>
-
+    <%--<asp:HiddenField ID="tab_index" runat="server" Value="0" />--%>
     <script>
         $("#tabs").tabs();
+        $("#btnDetails").click(function (e) {
+            $("#tabs").tabs("option", "active", 2);
+            return false;
+        });
+        $("#btncompliance").click(function (e) {
+            $("#tabs").tabs("option", "active", 1);
+            return false;
+        });
+        $("#btnNProjectcodes").click(function (e) {
+            $("#tabs").tabs("option", "active", 0);
+            return false;
+        });
+        $("#btnPrjDetails").click(function (e) {
+            $("#tabs").tabs("option", "active", 1);
+            return false;
+        });
+
+        //$(document).ready(function () {
+        //    var iSelectedTab = $(this).find("input[id*='tab_index']").val();
+        //    if (iSelectedTab == null)
+        //        iSelectedTab = 0;
+        //    $('[id$=tabs]').tabs({ selected: iSelectedTab });
+        //});
+            
    </script>
 
 </asp:Content>

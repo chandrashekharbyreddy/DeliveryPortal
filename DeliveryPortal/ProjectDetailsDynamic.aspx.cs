@@ -15,7 +15,7 @@ namespace DeliveryPortal
     {
         ProjectDL _projectDL = new ProjectDL();
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
+        bool ddlIDP_SelectedIndexChangedValue = false; 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -247,9 +247,10 @@ namespace DeliveryPortal
 
         protected void ddlIDP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int iSelectedId = Convert.ToInt32(ddlIDP.SelectedValue);            
+            int iSelectedId = Convert.ToInt32(ddlIDP.SelectedValue);
+            ddlIDP_SelectedIndexChangedValue = true;
             CreateDynamicControls(iSelectedId);
-            
+           // tab_index.Value = "1";
             
         }
         protected void CreateDynamicControls(int idpId)
@@ -261,7 +262,11 @@ namespace DeliveryPortal
             DataTable dtAttributeValues = GetDynamicAttributeValueList(idpId);
             //RequiredFieldValidator validator = new RequiredFieldValidator();
 
-         
+            if (ddlIDP_SelectedIndexChangedValue == false)
+            {
+                dtAttributes.Rows.Clear();
+
+            }
             foreach (DataRow dr in dtAttributes.Rows)
             {
                 Label lblId = new Label();
